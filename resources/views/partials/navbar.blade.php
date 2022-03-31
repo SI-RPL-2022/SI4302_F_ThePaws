@@ -11,8 +11,8 @@
                 <a class="nav-link text-white active" href="#">Home</a>
                 <a class="nav-link text-white" href="#">Services</a>
                 <a class="nav-link text-white" href="#">About Us</a>
-                <a class="nav-link btn btn-primary text-white sign-in-button paws-blue-btn" href="#">Sign In</a>
-                <a class="nav-link btn btn-primary text-white sign-up-button paws-blue-btn" href="#">Register</a>
+                <a class="nav-link btn btn-primary text-white sign-in-button paws-blue-btn" href="/login">Sign In</a>
+                <a class="nav-link btn btn-primary text-white sign-up-button paws-blue-btn" href="/register">Register</a>
             </div>
         </div>
     </div>
