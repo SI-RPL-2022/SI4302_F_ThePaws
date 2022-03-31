@@ -34,6 +34,11 @@
                     <p><i class="fas fa-location-dot mr-3"></i> Bandung</p>
                 </div>
                 <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold text-center">
+                        FAQ
+                    </h6>
+                </div>
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">
