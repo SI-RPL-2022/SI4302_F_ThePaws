@@ -57,6 +57,13 @@ body {
     border: 0;
 }
 
+.paws-peach-btn {
+    background-color: #f87575;
+    color: white;
+    border-radius: 2em;
+    border: 0;
+}
+
 .explore-more-button {
     width: 10em;
 }
@@ -100,4 +107,15 @@ body {
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+.img-aboutus {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.container-aboutus {
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
