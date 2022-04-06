@@ -15,7 +15,7 @@
                 </div>
                 <img src="img/muntah.jpg" class="card img-top rounded" width="720px">
                 <div align="justify" style="font-size:15px;">
-                    <p class="mt-3">{{$blog -> deskripsi}}</p>
+                    <p class="mt-3">{{$blog -> deskripsi}}</p> 
                 </div>
             </div>
         </div>
