@@ -9,7 +9,7 @@
                     <br>
                     <h2 class="text-start">{{$blog -> judul}}</h2>
                     <div class="card-text mb-1 text-start" style="font-size:15px;">
-                        <span class="badge bg-danger ">{{$blog -> kategori2}}</span>
+                        <span class="badge bg-danger ">{{$blog -> kategori2 -> nama}}</span>
                     </div>
                     <img src="img/admin.jpg" alt="" width="40" height="40" class="rounded-circle me-1"><small class="text-muted"> {{$blog -> creator}} <b>&nbsp;.&nbsp;</b> {{$blog -> created_at}}</small>
                 </div>

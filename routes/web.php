@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('blogsdetail');
-});
+Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
