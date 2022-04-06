@@ -33,4 +33,5 @@ class CreateUsersSeeder extends Seeder
             User::create($value);
         }
     }
+    
 }   

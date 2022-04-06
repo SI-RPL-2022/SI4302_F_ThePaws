@@ -21,6 +21,7 @@ Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home
 
 Route::get('/faq', function () {
     return view('faq');
+
 });
 
 Auth::routes();
