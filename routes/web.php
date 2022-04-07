@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AdminController;
+
+
+use App\Http\Controllers\HomeController;
+use App\Http\Middleware\IsAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +22,11 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 Route::get('/faq', function () {
     return view('faq');
+
 });
 
 Auth::routes();
@@ -32,7 +39,7 @@ Route::get('/admin', function () {
 });
 
 
-Route::get('/admin/category', [AdminController::class, 'showCategory'])->name('admin.category');
+Route::get('/category', [AdminController::class, 'showCategory'])->name('admin.category');
 Route::get('/admin/category/tambah', [AdminController::class, 'tambahCategory'])->name('admin.category.tambah');
 Route::post('/admin/category/tambah', [AdminController::class, 'storeCategory'])->name('admin.category.store');
 Route::get('/admin/category/edit/{id}', [AdminController::class, 'editCategory'])->name('admin.category.edit');
