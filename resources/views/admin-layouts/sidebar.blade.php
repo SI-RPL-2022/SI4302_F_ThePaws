@@ -34,35 +34,83 @@
         </li>
     </ul> --}}
 
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gray-200 sidebar sidebar-light accordion" id="accordionSidebar" style="text-align: left">
+
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-icon">
+            <img src="../BePro/img/Frame 35 (1) 2.png" alt="" width="30%">
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <!-- <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div> -->
     </a>
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+
+
+
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+    <li class="nav-item" >
+        <h5 class="nav-link" style="color: white" href="#">
+            <span>MENU</span></h5>
     </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    <li class="nav-item" >
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Contacts</span></a>
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Article</span></a>
     </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" style="color: white" href="{{ route('admin.category') }}" class="nav-link {{ (request()->is('admin/category*')) ? 'text-black' : 'text-muted' }}">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Category</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Data User</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-paw"></i>
+            <span>Adoption</span></a>
+    </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-users"></i>
+            <span>CaRecommend</span></a>
+    </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-house"></i>
+            <span>Pethouse</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-</ul>
+    <li class="nav-item" >
+        <h5 class="nav-link" style="color: white" href="#">
+            <span>OTHERS</span></h5>
+    </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" style="color: white" href="#">
+            <i class="fas fa-fw fa-sign-out"></i>
+            <span>Logout</span></a>
+    </li>
+
+
+  </ul>
 </div>

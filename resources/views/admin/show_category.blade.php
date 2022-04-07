@@ -7,13 +7,13 @@
         @include('admin-layouts.sidebar')
 
         {{-- show all data --}}
-        <div class="col-9 col-sm-10">
-            <div class="row px-2">
-                <div class="col-6 text-end my-auto">
-                    <h5>Total Kategori : <span class="badge text-dark" style="background-color: #F87575;">{{ $data->count() }}</span></h5>
+        <div class="col-9 col-sm-10 ">
+            <div class="row px-2 mt-5"style= "float:right; " >
+                <div class="col-12 text-end my-auto"  >
+                    <h5  >Total Kategori : <span class="badge text-dark" style="background-color: #F87575;">{{ $data->count() }}</span></h5>
                 </div>
             </div>
-            <div class="row py-2">
+            <div class="row py-2 mt-5" >
                 <div class="col-12">
                     <a href="{{ route('admin.category.tambah') }}" class="btn btn-sm mx-2 fw-bold" style="background-color: #8DB1F3;">Tambah Kategori</a>
                 </div>
