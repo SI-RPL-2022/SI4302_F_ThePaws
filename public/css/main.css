@@ -20,6 +20,10 @@ body {
     margin-left: 0.5rem;
 }
 
+.bg-paws {
+    background-color: #f87575;
+}
+
 .custom-nav #navbarNav .navbar-nav .nav.item {
     color: #f87575;
     font-weight: 500;

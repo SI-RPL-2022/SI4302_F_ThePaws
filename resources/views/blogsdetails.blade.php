@@ -1,5 +1,9 @@
 @extends("layouts.main")
 @section('container')
+@php
+use App\Models\Kategori;
+use App\Models\Kategori2;
+@endphp
 <div class="container">
     <div class="row mt-3">
         <div class="col-7 ">
@@ -9,13 +13,13 @@
                     <br>
                     <h2 class="text-start">{{$blog -> judul}}</h2>
                     <div class="card-text mb-1 text-start" style="font-size:15px;">
-                        <span class="badge bg-danger ">{{$blog -> kategori2 -> nama}}</span>
+                        <span class="badge bg-danger ">{{$kategori2 = Kategori2::find($blog->kategori2)->nama}}</span>
                     </div>
-                    <img src="img/admin.jpg" alt="" width="40" height="40" class="rounded-circle me-1"><small class="text-muted"> {{$blog -> creator}} <b>&nbsp;.&nbsp;</b> {{$blog -> created_at}}</small>
+                    <img src="{{ asset('img/admin.png') }}" alt="" width="40" height="40" class="rounded-circle me-1"><small class="text-muted"> {{$blog -> creator}} <b>&nbsp;.&nbsp;</b> {{$blog -> created_at}}</small>
                 </div>
-                <img src="img/muntah.jpg" class="card img-top rounded" width="720px">
+                <img src="{{ asset('img/blog4.png') }}" class="card img-top rounded" width="720px">
                 <div align="justify" style="font-size:15px;">
-                    <p class="mt-3">{{$blog -> deskripsi}}</p> 
+                    <p class="mt-3">{{$blog -> deskripsi}}</p>
                 </div>
             </div>
         </div>
@@ -38,7 +42,7 @@
                             <div class="col-1"></div>
                             <div class="col-5">
                                 <div class=" fs-6">
-                                    <span class="badge rounded-pill" style="background-color:#0000FF;">3</span>
+                                    <span class="badge rounded-pill" style="background-color:#0000FF;">{{$blog->count()}}</span>
                                 </div>
                             </div>
                         </div>
