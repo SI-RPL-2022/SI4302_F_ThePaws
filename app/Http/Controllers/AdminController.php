@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
+    public function dashboardAdmin()
+    {
+        return view('admin.dashboard');
+    }
     public function showCategory()
     {
         $data = Category::all();

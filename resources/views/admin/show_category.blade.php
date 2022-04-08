@@ -1,7 +1,7 @@
 @extends('admin-layouts.main')
 @section('container')
 
-<div class="container-fluid" style="min-height: 768px; background-color: #EBEBEB;">
+<div class="container-fluid" style="min-height: 768px; background-color: #F2F2F2;">
     <div class="row">
 
         @include('admin-layouts.sidebar')
@@ -15,7 +15,7 @@
             </div>
             <div class="row py-2 mt-5" >
                 <div class="col-12">
-                    <a href="{{ route('admin.category.tambah') }}" class="btn btn-sm mx-2 fw-bold" style="background-color: #8DB1F3;">Tambah Kategori</a>
+                    <a href="{{ route('admin.category.tambah') }}" class="btn btn-sm mx-2 fw-bold" style="background-color: #8DB1F3;color:white;border-radius:12px;padding:8px;font-size:16px;">Tambah Kategori</a>
                 </div>
             </div>
             <div class="row px-2">
