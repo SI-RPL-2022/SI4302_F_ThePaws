@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
+
+    public function dashboardAdmin()
+    {
+        return view('admin.dashboard');
+    }
     /**
      * Show the application dashboard.
      *
@@ -18,6 +23,7 @@ class AdminController extends Controller
     {
         return view(view: 'admin/index');
     }
+
 
 
     public function showCategory()

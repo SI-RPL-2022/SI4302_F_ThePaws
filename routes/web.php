@@ -55,12 +55,8 @@ Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user
 Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
 
 //admin route
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
-
-
-Route::get('/category', [AdminController::class, 'showCategory'])->name('admin.category');
+Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard');
+Route::get('/admin/category', [AdminController::class, 'showCategory'])->name('admin.category');
 Route::get('/admin/category/tambah', [AdminController::class, 'tambahCategory'])->name('admin.category.tambah');
 Route::post('/admin/category/tambah', [AdminController::class, 'storeCategory'])->name('admin.category.store');
 Route::get('/admin/category/edit/{id}', [AdminController::class, 'editCategory'])->name('admin.category.edit');
