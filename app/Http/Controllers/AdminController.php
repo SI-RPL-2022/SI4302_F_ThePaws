@@ -7,9 +7,19 @@ use App\Models\Category;
 
 use Illuminate\Support\Facades\Session;
 
-
 class AdminController extends Controller
 {
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view(view: 'admin/index');
+    }
+
+
     public function showCategory()
     {
         $data = Category::all();
@@ -68,6 +78,4 @@ class AdminController extends Controller
             Session::flash('errors', 'Gagal hapus data');
             return redirect()->back();
         }
-    }
-
 }

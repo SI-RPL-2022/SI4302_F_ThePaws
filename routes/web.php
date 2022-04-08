@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\AdminController;
 
@@ -43,6 +46,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+//user route
+// Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
+
+Route::get('/user/{id}', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user.edit');
+Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
+
 //admin route
 Route::get('/admin', function () {
     return view('admin.dashboard');
@@ -64,4 +75,3 @@ Route::post('blogs/update/{id}', [blogsController::class, 'update'])->name('blog
 Route::get('blogs/delete/{id}', [blogsController::class, 'destroy'])->name('blogs.destroy');
 
 Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
-
