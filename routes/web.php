@@ -4,16 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
-
-use App\Http\Controllers\AdminController;
-
-
 use App\Http\Controllers\HomeController;
-
 use App\Http\Middleware\IsAdmin;
-
-
-use App\Http\Middleware\IsAdmin;    
 use App\Http\Controllers\blogsController;
 
 /*
@@ -35,11 +27,10 @@ Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home
 
 Route::get('/faq', function () {
     return view('faq');
-
 });
 
 Route::get('blogs', function () {
-	return view('blogs');
+    return view('blogs');
 });
 
 Auth::routes();
@@ -63,11 +54,11 @@ Route::get('/admin/category/edit/{id}', [AdminController::class, 'editCategory']
 Route::post('/admin/category/update/{id}', [AdminController::class, 'updateCategory'])->name('admin.category.update');
 Route::get('/admin/category/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.category.delete');
 
-Route::get ('/blogs/index', [blogsController::class, 'show'])->name('blogs.show'); 
+Route::get('/blogs/index', [blogsController::class, 'show'])->name('blogs.show');
 Route::get('blogs', [blogsController::class, 'index'])->name('blogs.index');
 Route::get('blogs/create', [blogsController::class, 'create'])->name('blogs.create');
 Route::get('blogs/edit/{id}', [blogsController::class, 'edit'])->name('blogs.edit');
 Route::post('blogs/update/{id}', [blogsController::class, 'update'])->name('blogs.update');
 Route::get('blogs/delete/{id}', [blogsController::class, 'destroy'])->name('blogs.destroy');
 
-Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+// Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
