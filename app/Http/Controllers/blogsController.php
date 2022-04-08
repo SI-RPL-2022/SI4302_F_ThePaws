@@ -58,9 +58,11 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
-    public function show(blogs $blogs)
+    public function show($id)
     {
-        return view('blogs.show',compact('blogs'));
+        $blog = blogs::find($id);
+        // dd($blog);
+        return view('blogs.show',compact('blog'));
     } 
      
     /**
@@ -69,8 +71,9 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
-    public function edit(blogs $blogs)
+    public function edit($id)
     {
+        $blogs = blogs::find($id);
         return view('blogs.edit',compact('blogs'));
     }
     
@@ -81,7 +84,7 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, blogs $blogs)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'judul' => 'required',
@@ -90,10 +93,14 @@ class blogsController extends Controller
 
         ]);
     
-        $blogs->update($request->all());
+        // $blogs->update($request->all());
+        $blog = blogs::find($id);
+        $blog->judul = $request->judul;
+        $blog->jenis = $request->jenis;
+        $blog->kategori = $request->kategori;
         $blogs->save();
         
-        blogs::whereId($id)->update($validatedData);
+        // blogs::whereId($id)->update($validatedData);
 
         return redirect('/blogs')->with('success', 'Game Data is successfully updated');
         // return back()->withInput(); 

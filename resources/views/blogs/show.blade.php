@@ -16,20 +16,20 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Judul:</strong>
-                {{ $blogs->judul }}
+                {{ $blog->judul }}
             </div>
         </div>
             <div class="form-group">
                 <strong>Jenis Hewan:</strong>
-                {{ $blogs->jenis }}
+                {{ $blog->jenis }}
             </div>
                 <div class="form-group">
                      <strong>Kategori:</strong>
-                     {{ $blogs->kategori }}
+                     {{ $blog->kategori }}
             </div>
                  <div class="form-group">
                      <strong>Tanggal Pembuatan:</strong>
-                    {{ $blogs->created_at }}
+                    {{ $blog->created_at }}
                 </div>
         </div>
     </div>

@@ -38,12 +38,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Jenis Hewan:</strong>
-                    <input class="form-control" style="height:150px" name="jenis" placeholder="jenis">{{ $blogs->jenis }}</textarea>
+                    <input class="form-control" style="height:150px" name="jenis" placeholder="jenis" value={{ $blogs->jenis }}></input>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Kategori:</strong>
-                    <input class="form-control" style="height:150px" name="kategori" placeholder="kategori">{{ $blogs->kategori }}</textarea>
+                    <input class="form-control" style="height:150px" name="kategori" placeholder="kategori" value={{ $blogs->kategori }}></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

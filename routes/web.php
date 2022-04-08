@@ -29,7 +29,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get ('/blogs/index', [blogsController::class, 'show'])->name('blogs.show'); 
+Route::get ('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show'); 
 Route::get('blogs', [blogsController::class, 'index'])->name('blogs.index');
 Route::get('blogs/create', [blogsController::class, 'create'])->name('blogs.create');
 Route::get('blogs/edit/{id}', [blogsController::class, 'edit'])->name('blogs.edit');
