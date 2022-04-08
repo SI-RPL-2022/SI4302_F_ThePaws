@@ -15,6 +15,7 @@ use App\Http\Controllers\blogsController;
 |
 */
 
+
 Route::get('/', function () {
     return view('index');
 });
@@ -35,3 +36,5 @@ Route::get('blogs/create', [blogsController::class, 'create'])->name('blogs.crea
 Route::get('blogs/edit/{id}', [blogsController::class, 'edit'])->name('blogs.edit');
 Route::post('blogs/update/{id}', [blogsController::class, 'update'])->name('blogs.update');
 Route::get('blogs/delete/{id}', [blogsController::class, 'destroy'])->name('blogs.destroy');
+
+Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
