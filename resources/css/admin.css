@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&family=Roboto:wght@100;400;500;700&display=swap");
+body {
+    font-family: "Pangolin", cursive;
+    font-family: "Roboto", sans-serif;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 50vmax;
+    text-align: center;
+}
+
+.custom-nav .navbar-brand img {
+    width: 150px;
+    height: 150px;
+    margin-top: -7px;
+}
+
+.custom-nav .navbar-brand span {
+    color: #f87575;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+}
+
+.custom-nav #navbarNav .navbar-nav .nav.item {
+    color: #f87575;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-left: 2em;
+}
+/*# sourceMappingURL=main.css.map */
+
+.text-paws {
+    color: #f87575 !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-left: 2.4em;
+}
+
+.sign-in-bottom {
+    background-color: #8db1f3;
+    color: white;
+    border-radius: 2em;
+    border: 0;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.img-title {
+    width: 250px;
+  }
+
