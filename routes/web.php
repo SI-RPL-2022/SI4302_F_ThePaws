@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\blogsController;
+use App\Http\Controllers\BlogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,20 +34,23 @@ Route::get('/faq', function () {
 Route::get('blogs', function () {
     return view('blogs');
 });
-
+Route::get('blogs/create', function () {
+	return view('blogs.create');
+});
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::get ('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show'); 
 
-//user route
-// Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
+// //user route
+// // Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
 
-Route::get('/user/{id}', 'App\Http\Controllers\UserController@profile')->name('user.profile');
-Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user.edit');
-Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
+// Route::get('/user/{id}', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+// Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user.edit');
+// Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
 
-//admin route
+// //admin route
 Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard');
 Route::get('/admin/category', [AdminController::class, 'showCategory'])->name('admin.category');
 Route::get('/admin/category/tambah', [AdminController::class, 'tambahCategory'])->name('admin.category.tambah');
@@ -56,9 +61,14 @@ Route::get('/admin/category/delete/{id}', [AdminController::class, 'deleteCatego
 
 Route::get('/blogs/index', [blogsController::class, 'show'])->name('blogs.show');
 Route::get('blogs', [blogsController::class, 'index'])->name('blogs.index');
+Route::post('/blogs/create', [blogsController::class, 'store'])->name('blogs.store');
 Route::get('blogs/create', [blogsController::class, 'create'])->name('blogs.create');
 Route::get('blogs/edit/{id}', [blogsController::class, 'edit'])->name('blogs.edit');
 Route::post('blogs/update/{id}', [blogsController::class, 'update'])->name('blogs.update');
 Route::get('blogs/delete/{id}', [blogsController::class, 'destroy'])->name('blogs.destroy');
+<<<<<<< HEAD
 
 // Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+=======
+Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+>>>>>>> Farhan_PBI

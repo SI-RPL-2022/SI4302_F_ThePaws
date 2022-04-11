@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Artikel</h2>
+                <h2> Preview Artikel</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('blogs.index') }}"> Back</a>
@@ -16,22 +16,23 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Judul:</strong>
-                {{ $blogs->judul }}
+                {{ $blog->judul }}
             </div>
         </div>
             <div class="form-group">
                 <strong>Jenis Hewan:</strong>
-                {{ $blogs->jenis }}
+                {{ $blog->jenis }}
             </div>
                 <div class="form-group">
                      <strong>Kategori:</strong>
-                     {{ $blogs->kategori }}
+                     {{ $blog->kategori }}
             </div>
                  <div class="form-group">
                      <strong>Tanggal Pembuatan:</strong>
-                    {{ $blogs->created_at }}
-                </div>
-        </div>
+                    {{ $blog->created_at }}
+                </div>  
+            </div>
+             </div>
     </div>
  </div>
 @endsection

@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view(view: 'admin/index');
+        return view('admin.index');
     }
 
 
@@ -95,4 +95,5 @@ class AdminController extends Controller
 
 =======
 >>>>>>> main
+}
 }

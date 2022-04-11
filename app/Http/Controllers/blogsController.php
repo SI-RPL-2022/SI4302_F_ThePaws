@@ -45,6 +45,8 @@ class blogsController extends Controller
             'judul' => 'required',
             'jenis' => 'required',
             'kategori' => 'required',
+            'cover' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         Blog::create($request->all());
@@ -59,6 +61,7 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function show()
     {
         $blogs = Blog::all();
@@ -71,15 +74,31 @@ class blogsController extends Controller
         return view('blogsdetails', compact('blogs', 'blog'));
     }
 
+=======
+    public function show($id)
+    {
+        $blog = blogs::find($id);
+        // dd($blog);
+        return view('blogs.show',compact('blog'));
+    } 
+     
+>>>>>>> Farhan_PBI
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function edit(Blog $blogs)
     {
         return view('blogs.edit', compact('blogs'));
+=======
+    public function edit($id)
+    {
+        $blogs = blogs::find($id);
+        return view('blogs.edit',compact('blogs'));
+>>>>>>> Farhan_PBI
     }
 
     /**
@@ -89,7 +108,11 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request, Blog $blogs)
+=======
+    public function update(Request $request, $id)
+>>>>>>> Farhan_PBI
     {
         $request->validate([
             'judul' => 'required',
@@ -97,11 +120,23 @@ class blogsController extends Controller
             'kategori' => 'required',
 
         ]);
+<<<<<<< HEAD
 
         $blogs->update($request->all());
         $blogs->save();
 
         Blog::whereId($id)->update($validatedData);
+=======
+    
+        // $blogs->update($request->all());
+        $blog = blogs::find($id);
+        $blog->judul = $request->judul;
+        $blog->jenis = $request->jenis;
+        $blog->kategori = $request->kategori;
+        $blogs->save();
+        
+        // blogs::whereId($id)->update($validatedData);
+>>>>>>> Farhan_PBI
 
         return redirect('/blogs')->with('success', 'Game Data is successfully updated');
         // return back()->withInput(); 
