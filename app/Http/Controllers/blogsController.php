@@ -18,8 +18,9 @@ class blogsController extends Controller
     public function index()
     {
         $blogs = Blog::latest()->paginate(5);
+        dd($blogs);
 
-        return view('blogs.index', compact('blogs'))
+        return view('blogs.blogs', compact('blogs'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -61,44 +62,25 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function show()
+    public function show(Request $request, $id)
     {
         $blogs = Blog::all();
-        $kategoris = Kategori::all();
-        $kategori = $kategoris->first();
-        $kategori2s = Kategori2::all();
-        $kategori2 = $kategori2s->first();
-
-        $blog = $blogs->first();
-        return view('blogsdetails', compact('blogs', 'blog'));
+        $blog = Blog::find($id);
+        $kategori1 = Kategori::all();
+        $kategoris = Kategori2::all();
+        return view('blogs.blogsdetails', compact('blog', 'blogs', 'kategori1', 'kategoris'));
     }
 
-=======
-    public function show($id)
-    {
-        $blog = blogs::find($id);
-        // dd($blog);
-        return view('blogs.show',compact('blog'));
-    } 
-     
->>>>>>> Farhan_PBI
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function edit(Blog $blogs)
-    {
-        return view('blogs.edit', compact('blogs'));
-=======
     public function edit($id)
     {
-        $blogs = blogs::find($id);
-        return view('blogs.edit',compact('blogs'));
->>>>>>> Farhan_PBI
+        $blogs = Blog::find($id);
+        return view('blogs.edit', compact('blogs'));
     }
 
     /**
@@ -108,11 +90,7 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function update(Request $request, Blog $blogs)
-=======
     public function update(Request $request, $id)
->>>>>>> Farhan_PBI
     {
         $request->validate([
             'judul' => 'required',
@@ -120,23 +98,15 @@ class blogsController extends Controller
             'kategori' => 'required',
 
         ]);
-<<<<<<< HEAD
 
-        $blogs->update($request->all());
-        $blogs->save();
-
-        Blog::whereId($id)->update($validatedData);
-=======
-    
         // $blogs->update($request->all());
-        $blog = blogs::find($id);
+        $blog = Blog::find($id);
         $blog->judul = $request->judul;
         $blog->jenis = $request->jenis;
         $blog->kategori = $request->kategori;
         $blogs->save();
-        
+
         // blogs::whereId($id)->update($validatedData);
->>>>>>> Farhan_PBI
 
         return redirect('/blogs')->with('success', 'Game Data is successfully updated');
         // return back()->withInput(); 

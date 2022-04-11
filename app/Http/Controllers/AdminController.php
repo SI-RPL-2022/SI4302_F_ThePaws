@@ -7,11 +7,6 @@ use App\Models\Category;
 
 use Illuminate\Support\Facades\Session;
 
-<<<<<<< HEAD
-
-class AdminController extends Controller
-{
-=======
 class AdminController extends Controller
 {
 
@@ -31,7 +26,6 @@ class AdminController extends Controller
 
 
 
->>>>>>> main
     public function showCategory()
     {
         $data = Category::all();
@@ -90,10 +84,5 @@ class AdminController extends Controller
             Session::flash('errors', 'Gagal hapus data');
             return redirect()->back();
         }
-<<<<<<< HEAD
-    }
-
-=======
->>>>>>> main
 }
 }
