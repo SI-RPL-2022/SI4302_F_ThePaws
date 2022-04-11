@@ -1,10 +1,10 @@
 <?php
-  
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-  
-class CreateblogsTable extends Migration
+
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateblogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('jenis');
-            $table->string('kategori');
-            $table->string('cover');
-            $table->longText('deskripsi'); 
+            $table->string('nama_kategori');
             $table->timestamps();
         });
     }
-  
+
     /**
      * Reverse the migrations.
      *
@@ -31,6 +27,6 @@ class CreateblogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('categories');
     }
 }

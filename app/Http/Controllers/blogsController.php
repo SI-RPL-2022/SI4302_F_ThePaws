@@ -44,6 +44,8 @@ class blogsController extends Controller
             'judul' => 'required',
             'jenis' => 'required',
             'kategori' => 'required',
+            'cover' => 'required',
+            'deskripsi' => 'required',
         ]);
     
         blogs::create($request->all());
