@@ -35,7 +35,7 @@
                              <strong>{{ $message }}</strong>
                         </span>
                      @enderror
-                   </div>
+         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
                     <label for="">Jenis Hewan</label>
                     <input type="text" class="form-control form-control-sm @error('jenis') is-invalid @enderror" name="jenis">

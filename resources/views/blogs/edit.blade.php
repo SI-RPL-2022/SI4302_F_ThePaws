@@ -1,7 +1,8 @@
-@extends('blogs.layout')
-   
-@section('content')
+@extends('admin-layouts.main')
+
+@section('container')
     <div class="row">
+    @include('admin-layouts.sidebar')
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Edit Artikel</h2>
@@ -45,9 +46,26 @@
                     <strong>Kategori:</strong>
                     <input class="form-control" style="height:150px" name="kategori" placeholder="kategori" value={{ $blogs->kategori }}></input>
                 </div>
+                </div>
+                   <label for="">Cover</label>
+                    <input type="file" class="form-control form-control-sm @error('cover') is-invalid @enderror" name="cover" value="{{ old('cover') }}">
+                      @error('cover')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                            @enderror  
+                        </div>               
+                     <label for="">Deskripsi Berita</label>
+                     <textarea name="deskripsi" id="editor" class="form-control form-control-sm @error('deskripsi') is-invalid @enderror">{{ old('deskripsi') }}</textarea>
+                        @error('deskripsi')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                             </span>
+                            @enderror
+             </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-sm mt-2 fw-bold" type="submit" style="background-color: #8DB1F3;color:white;border-radius:12px;">Update</button>
             </div>
         </div>
    

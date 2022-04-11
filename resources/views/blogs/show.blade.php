@@ -32,14 +32,6 @@
                     {{ $blog->created_at }}
                 </div>  
             </div>
-            <div class="modal-body">
-            <div class="container">
-                     <h4 class="text-center">{{ $blog->judul }}</h4>
-                      <img src="{{ asset('image/cover/'.$blo->cover) }}" class="img-fluid" alt="">
-                    <div class="mt-2" align="justify">
-                    {!! $blog->deskripsi !!}
-                    </div>                                                        
-                 </div>
              </div>
     </div>
  </div>
