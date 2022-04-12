@@ -10,6 +10,6 @@ class Blog extends Model
     use HasFactory;
   
     protected $fillable = [
-        'judul', 'jenis' , 'kategori' ,'created_at' ,'cover', 'deskripsi'
+        'judul', 'jenis' , 'kategori' ,'created_at' ,'cover', 'deskripsi', 'updated_at'
     ];
 }

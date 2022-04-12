@@ -18,8 +18,6 @@ class blogsController extends Controller
     public function index()
     {
         $blogs = Blog::latest()->paginate(5);
-        dd($blogs);
-
         return view('blogs.blogs', compact('blogs'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\blogsController;
+use App\Http\Controllers\WebController;
 use App\Http\Controllers\BlogController;
 
 
@@ -21,10 +22,8 @@ use App\Http\Controllers\BlogController;
 |
 */
 
+Route::get('/', [WebController::class, 'index'])->name('landing.page');
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 Route::get('/faq', function () {
