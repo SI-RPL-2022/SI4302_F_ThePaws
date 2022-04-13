@@ -75,3 +75,5 @@ Route::get('/blogs', [blogsController::class, 'index'])->name('blogs.all');
 // Route::get('/blogs/{id}', [blogsController::class, 'details'])->name('blogs.details');{}{}
 
 // Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+Route::get('/profile/edit', [UserController::class, 'edit'])->name('user.profile.edit');
+Route::post('/profile/edit', [UserController::class, 'update'])->name('user.profile.update');

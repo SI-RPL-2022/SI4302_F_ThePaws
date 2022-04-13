@@ -23,8 +23,8 @@
                 <tr>
                     <th>No</th>
                     <th>Judul Artikel</th>
-                    <th>Jenis Hewan</th>
-                    <th>Kategori</th>
+                    <th>Kategori Hewan</th>
+                    <th>Kategori Informasi</th>
                     <th>Tanggal Pembuatan</th>
                     <th width="280px">Action</th>
                 </tr>
@@ -32,8 +32,8 @@
                 <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $blog->judul }}</td>
-                    <td>{{ $blog->jenis }}</td>
-                    <td>{{ $blog->kategori }}</td>
+                    <td>{{ $blog->kategori1 }}</td>
+                    <td>{{ $blog->kategori2 }}</td>
                     <td>{{ $blog->created_at }}</td>
                     <td>
                         <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
@@ -54,10 +54,11 @@
                 </tr>
                 @endforeach
             </table>
+            {!! $blogs->links() !!}
         </div>
     </div>
 </div>
 
-{!! $blogs->links() !!}
+
 
 @endsection

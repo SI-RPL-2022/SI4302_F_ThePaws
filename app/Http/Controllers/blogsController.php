@@ -17,9 +17,10 @@ class blogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest()->paginate(5);
-        return view('blogs.blogs', compact('blogs'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $blogs = Blog::orderby('updated_at', 'DESC')->get();
+        $kategori1 = Kategori::all();
+        $kategoris = Kategori2::all();
+        return view('blogs.blogs', compact('blogs', 'kategori1', 'kategoris'));
     }
 
     /**
@@ -43,7 +44,6 @@ class blogsController extends Controller
         $kategoris = Kategori2::all();
         return view('blogs.blogsdetails', compact('blog', 'blogs', 'kategori1', 'kategoris'));
     }
-
     // public function destroy(blogs $blogs)
     // {
     //     $blogs->delete();
