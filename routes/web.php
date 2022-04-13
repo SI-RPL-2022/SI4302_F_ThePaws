@@ -24,8 +24,6 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/', [WebController::class, 'index'])->name('landing.page');
 
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-
 Route::get('/faq', function () {
     return view('faq');
 });
@@ -50,7 +48,7 @@ Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user
 Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
 
 // //admin route
-Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard');
+Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.home')->middleware('is_admin');
 Route::get('/admin/category', [AdminController::class, 'showCategory'])->name('admin.category');
 Route::get('/admin/category/tambah', [AdminController::class, 'tambahCategory'])->name('admin.category.tambah');
 Route::post('/admin/category/tambah', [AdminController::class, 'storeCategory'])->name('admin.category.store');
@@ -58,11 +56,12 @@ Route::get('/admin/category/edit/{id}', [AdminController::class, 'editCategory']
 Route::post('/admin/category/update/{id}', [AdminController::class, 'updateCategory'])->name('admin.category.update');
 Route::get('/admin/category/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.category.delete');
 Route::get('/admin/category/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.category.delete');
-Route::post('/admin/blogs/create', [blogsController::class, 'store'])->name('blogs.store');
-Route::get('/admin/blogs/create', [blogsController::class, 'create'])->name('blogs.create');
-Route::get('/admin/blogs/edit/{id}', [blogsController::class, 'edit'])->name('blogs.edit');
-Route::post('/admin/blogs/update/{id}', [blogsController::class, 'update'])->name('blogs.update');
-Route::get('/admin/blogs/delete/{id}', [blogsController::class, 'destroy'])->name('blogs.destroy');
+Route::get('/admin/blogs', [AdminController::class, 'indexBlog'])->name('blogs.admin');
+Route::post('/admin/blogs/create', [AdminController::class, 'storeBlog'])->name('blogs.store');
+Route::get('/admin/blogs/create', [AdminController::class, 'createBlog'])->name('blogs.create');
+Route::get('/admin/blogs/edit/{id}', [AdminController::class, 'editBlog'])->name('blogs.edit');
+Route::post('/admin/blogs/update/{id}', [AdminController::class, 'updateBlog'])->name('blogs.update');
+Route::get('/admin/blogs/delete/{id}', [AdminController::class, 'destroyBlog'])->name('blogs.destroy');
 
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');

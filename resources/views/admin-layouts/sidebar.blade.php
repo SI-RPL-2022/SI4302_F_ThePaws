@@ -8,13 +8,13 @@
             <span>MENU</span></h5>
     </li>
     <li class="nav-item" >
-        <a class="nav-link" style="color: white" href="{{ route('admin.dashboard') }}" class="nav-link {{ (request()->is('admin/dashboard*')) ? 'text-black' : 'text-muted' }}">
+        <a class="nav-link" style="color: white" href="{{ route('admin.home') }}" class="nav-link {{ (request()->is('admin/dashboard*')) ? 'text-black' : 'text-muted' }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" style="color: white" href="#">
+        <a class="nav-link" style="color: white" href="{{ route('blogs.admin') }}">
             <i class="fas fa-fw fa-newspaper"></i>
             <span>Article</span></a>
     </li>
@@ -55,10 +55,15 @@
             <span>OTHERS</span></h5>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" style="color: white" href="#">
+    <li class="nav-item">   
+        <a class="nav-link" style="color: white" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
             <i class="fas fa-fw fa-sign-out"></i>
             <span>Logout</span></a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
     </li>
 
 
