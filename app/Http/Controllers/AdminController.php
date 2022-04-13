@@ -37,55 +37,110 @@ class AdminController extends Controller
         return view('admin.show_category', compact('data1', 'data2'));
     }
 
-    public function tambahCategory()
+    public function tambahCategory1()
     {
-        return view('admin.tambah_category');
+        return view('admin.tambah_category1');
     }
 
-    public function storeCategory(Request $request)
+    public function tambahCategory2()
+    {
+        return view('admin.tambah_category2');
+    }
+
+    public function storeCategory1(Request $request)
     {
         $validate = $request->validate([
             'nama' => 'required'
         ]);
 
         $category = Kategori::create([
-            'nama_kategori' => $request->nama_kategori
+            'nama' => $request->nama
         ]);
 
-        return redirect(route('admin.category'))->with('success', 'Data Berhasil Ditambahkan');
+        return redirect(route('admin.category'))->with('success1', 'Data Berhasil Ditambahkan');
     }
-    public function editCategory($id)
+
+    public function storeCategory2(Request $request)
+    {
+        $validate = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        $category = Kategori2::create([
+            'nama' => $request->nama
+        ]);
+
+        return redirect(route('admin.category'))->with('success2', 'Data Berhasil Ditambahkan');
+    }
+
+    public function editCategory1($id)
     {
         $data = Kategori::find($id);
 
-        return view('admin.edit_category', compact('data'));
+        return view('admin.edit_category1', compact('data'));
     }
 
-    public function updateCategory(Request $request, $id)
+    public function editCategory2($id)
+    {
+        $data = Kategori2::find($id);
+
+        return view('admin.edit_category2', compact('data'));
+    }
+
+    public function updateCategory1(Request $request, $id)
     {
         $data = Kategori::find($id);
 
         $validate = $request->validate([
-            'nama_kategori' => 'required'
+            'nama' => 'required'
         ]);
 
-        $data->nama_kategori = $request->nama_kategori;
+        $data->nama = $request->nama;
 
         $data->save();
 
-        return redirect(route('admin.category'))->with('success', 'Data Berhasil Diubah');
+        return redirect(route('admin.category'))->with('success1', 'Data Berhasil Diubah');
     }
-    public function deleteCategory($id)
+
+    public function updateCategory2(Request $request, $id)
+    {
+        $data = Kategori2::find($id);
+
+        $validate = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        $data->nama = $request->nama;
+
+        $data->save();
+
+        return redirect(route('admin.category'))->with('success2', 'Data Berhasil Diubah');
+    }
+    public function deleteCategory1($id)
     {
 
         $data = Kategori::findOrFail($id);
         $delete = $data->delete();
 
         if ($delete) {
-            Session::flash('success', 'Berhasil hapus data');
+            Session::flash('success1', 'Berhasil hapus data');
             return redirect()->back();
         } else {
-            Session::flash('errors', 'Gagal hapus data');
+            Session::flash('errors1', 'Gagal hapus data');
+            return redirect()->back();
+        }
+}
+    public function deleteCategory2($id)
+    {
+
+        $data = Kategori2::findOrFail($id);
+        $delete = $data->delete();
+
+        if ($delete) {
+            Session::flash('success2', 'Berhasil hapus data');
+            return redirect()->back();
+        } else {
+            Session::flash('errors2', 'Gagal hapus data');
             return redirect()->back();
         }
 }
