@@ -40,14 +40,12 @@ Route::get('blogs/create', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 
 //user route
 // Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
 
-Route::get('/user/{id}', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+Route::get('/user', 'App\Http\Controllers\UserController@profile')->name('user.profile');
 Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user.edit');
 Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
 

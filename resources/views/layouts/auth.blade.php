@@ -21,9 +21,7 @@
 </head>
 
 <body>
-    @include('partials.navbar')
     @yield('container')
-    @include('partials.footer')
 </body>
 
 </html>

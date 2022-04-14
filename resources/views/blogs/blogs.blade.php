@@ -163,9 +163,9 @@
                                                 </h5>
                                                 <p class="card-text crop-text-4 text-justify">
                                                     {{ $blog->deskripsi }}</p>
-                                                <button href="{{ '/blogs/' . $blog->id . '' }}" class="btn btn-primary"
+                                                <a href="{{ '/blogs/'.$blog->id.''}}" class="btn btn-primary"
                                                     style="border-radius: 20px">Read
-                                                    more &nbsp<i class="fas fa-arrow-right"></i></button>
+                                                    more &nbsp<i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +243,7 @@
                                                     {{ $blog->judul }}</h5>
                                                 <p class="card-text text-justify crop-text-4">{{ $blog->deskripsi }}
                                                 </p>
-                                                <a href="#" class="btn btn-primary" style="border-radius: 20px">Read
+                                                <a href="{{ '/blogs/' . $blog->id . '' }}" class="btn btn-primary" style="border-radius: 20px">Read
                                                     more &nbsp<i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>

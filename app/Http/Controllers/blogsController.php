@@ -38,7 +38,7 @@ class blogsController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderby('updated_at', 'DESC')->get();
         $blog = Blog::find($id);
         $kategori1 = Kategori::all();
         $kategoris = Kategori2::all();
