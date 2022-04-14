@@ -1,82 +1,90 @@
-@extends('layouts.main')
-
+@extends('user-layouts.main')
 @section('container')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8"> 
-            <div class="card">
-                <div class="card-header">{{ __('Edit Profile') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('user.profile.update') }}">
-                        @csrf
 
-                        @if(session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{session('success')}}
+<div class="container-fluid" style="min-height: 768px; background-color: #F2F2F2;">
+    <div class="row">
+        @include('user-layouts.sidebaruser')
+        <div class="col-9 col-sm-10 ">
+
+          <div class="card" style="margin-top: 5ex; margin-left: 3ex; margin-right: 3ex;">
+            <div class="card-body">
+            <div class="container" style="margin-top:5ex">
+                <div class="row">
+                  <!-- left column -->
+                  <div class="col-md-3">
+                    <div class="text-center">
+                      <img src="/img/Userjennie.png" class="avatar img-circle" alt="avatar" width="250px">
+                    </div>
+                  </div>
+                  
+                        <!-- edit form column -->
+                  <div class="col-md-9 personal-info">
+                    
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <label class="col-lg-3 control-label">Nama Lengkap</label>
+                        <div class="col-lg-8">
+                          <input class="form-control" type="text" value="Jane">
                         </div>
-                        @endif
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" value="{{ $user['name'] }}" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
-
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-lg-3 control-label">Alamat Email</label>
+                        <div class="col-lg-8">
+                          <input class="form-control" type="text" value="janesemail@gmail.com">
                         </div>
+                      </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" value="{{ $user['email'] }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                      <div class="form-group">
+                        <label class="col-lg-3 control-label">Jenis Kelamin</label>
+                        <div class="col-lg-8">
+                          <label class="radio-inline"> <input type="radio"  name="gender">Laki-Laki</label>
+                          <label class="radio-inline"><input type="radio" name="gender">Perempuan</label>
                         </div>
+                      </div>
 
-                        <!-- <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                      <div class="form-group">
+                        <label class="col-lg-3 control-label">Tanggal lahir</label>
+                        <div class="col-lg-8">
+                          <div class="input-group date" id="datepicker">
+                            <input type="text" class="form-control" id="date"/>
+                            <span class="input-group-append">
+                              <span class="input-group-text bg-light d-block">
+                                <i class="fa fa-calendar"></i>
+                              </span>
+                            </span>
+                          </div>
                         </div>
+                      </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div> -->
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Update Profile') }}
-                                </button>
-                            </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Alamat</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="form7Example7" rows="4">
+                            </textarea>
                         </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Foto Profile</label>
+                        <div class="col-md-8">
+                            <input type="file" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                          <input type="button" class="btn btn-primary" value="Simpan">
+                          <span></span>
+                          <input type="reset" class="btn btn-default" value="Cancel">
+                        </div>
+                      </div>
                     </form>
-                </div>
+                  </div>
+              </div>
             </div>
+        </div>
+          </div>
         </div>
     </div>
 </div>
