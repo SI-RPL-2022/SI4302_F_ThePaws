@@ -28,6 +28,10 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+
 Route::get('blogs', function () {
     return view('blogs');
 });

@@ -3,16 +3,35 @@
         <a class="navbar-brand" href="/">
             <img src="{{asset('img/logo.png')}}" alt="The Paws Logo" />
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <a class="nav-link text-white active" href="/">Home</a>
+                    <a class="nav-link text-white" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">Adoption</a>
+                        </li>
+                        <li><a href="/blogs" style="text-decoration: none; color:black; margin-left:2ex">Blogs</a>
+                        </li>
+                        <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">CaRecommend</a>
+                        </li>
+                        <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">PetHouse</a>
+                        </li>
+                        <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">PetCessories</a>
+                        </li>
+                      </ul>
+                    <a class="nav-link text-white" href="/aboutus">About Us</a>
+                  </li>
+                </ul>
+              </div>
+        
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <div class="navbar-nav">
-                <a class="nav-link text-white active" href="#">Home</a>
-                <a class="nav-link text-white" href="#">Services</a>
-                <a class="nav-link text-white" href="#">About Us</a>
                 <a class="nav-link btn btn-primary text-white sign-in-button paws-blue-btn" href="/login">Sign In</a>
                 <a class="nav-link btn btn-primary text-white sign-up-button paws-blue-btn" href="/register">Register</a>
+                
             </div>
         </div>
     </div>
