@@ -7,7 +7,7 @@
                 <h1 class="text-break text-pangolin">Taking Care <br> For Your Pet</h1>
                 <p class="text-roboto">Keep the bonding between human and pets</p>
             </div>
-            <a class="btn btn-primary text-white paws-blue-btn text-center explore-more-button" href="#">Explore More >
+            <a class="btn btn-primary text-white paws-blue-btn text-center explore-more-button" href="/blogs">Explore More >
             </a>
         </div>
         <div class="col">
