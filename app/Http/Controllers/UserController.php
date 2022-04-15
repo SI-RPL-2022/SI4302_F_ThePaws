@@ -8,13 +8,42 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function profile($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            return response()->json([
+                'id' => $id,
+                'name' => $user->name,
+                'email' => $user->email,
+
+            ]);
+        } else {
+            return response()->json([
+                'errors' => [
+                    'root' => "Tidak bisa menemukan user"
+                ]
+            ]);
+        }
+    }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('images', $filename, 'public');
+            Auth()->user()->update(['image' => $filename]);
+        }
+        return redirect()->back();
+    }
+
     public function edit()
     {
         if (Auth::user()) {
             $user = User::find(Auth::user()->id);
 
             if ($user) {
-                return view('user.edit')->withUser($user);
+                return view('user.home')->withUser($user);
             } else {
                 return redirect()->back();
             }
