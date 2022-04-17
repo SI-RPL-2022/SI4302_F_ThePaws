@@ -1,14 +1,17 @@
-<div class="col-3 col-sm-2 d-flex flex-column flex-shrink-0 p-3 text-black " style="min-height: 768px; background-color: #F87575;">
+<div class="col-3 col-sm-2 d-flex flex-column flex-shrink-0 p-3 text-black  " style="min-height: 768px; background-color: #F87575;">
 
-<!-- Sidebar -->
 <ul class="navbar-nav bg-gray-200 sidebar sidebar-light accordion" id="accordionSidebar" style="text-align: left">
 
     <div class="d-flex align-items-center mt-3 mb-2">
         <div class="flex-shrink-0 ms- 1">
-        <img src="/img/UserProfileJennie.png" width="50" height="50" class="rounded-circle me-2" alt="...">
+            @if (empty($user->image))
+            <i class="fa-solid fa-circle-user text-white">&nbsp;&nbsp;</i>
+            @else
+            <img src="{{ asset(''.$user->image.'') }}" width="50" height="50" class="rounded-circle me-2" alt="...">
+            @endif
         </div>
         <div class="flex-grow-1">
-            <a style="color: white"><small style="font-size: 15px;">Jennie</small></a>
+            <a style="color: white"><small style="font-size: 15px;">{{ $user->name }}</small></a>
         </div>
     </div>
 
@@ -18,7 +21,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" style="color: white" href="#">
+        <a class="nav-link" style="color: white" href="{{ route('user.profile') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>User Profile</span></a>
     </li>

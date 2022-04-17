@@ -8,16 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function profile($id)
+    public function profile()
     {
-        $user = User::find($id);
+        $user = Auth()->user();
         if ($user) {
-            return response()->json([
-                'id' => $id,
-                'name' => $user->name,
-                'email' => $user->email,
-
-            ]);
+            return view('user.home', compact('user'));
         } else {
             return response()->json([
                 'errors' => [
@@ -43,7 +38,7 @@ class UserController extends Controller
             $user = User::find(Auth::user()->id);
 
             if ($user) {
-                return view('user.home')->withUser($user);
+                return view('user.edit')->withUser($user);
             } else {
                 return redirect()->back();
             }
@@ -54,35 +49,26 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        $user = User::find(Auth::user()->id);
+        $validatedData = $request->validate([
+            "id" => "required",
+            'name' => "required",
+            'email' => "required",
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir'=>'required',
+            'alamat'=>'required',
+            'image'=>'required',
+        ]);
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->tanggal_lahir = $request->tanggal_lahir;
+        $user->alamat = $request->alamat;
+        $user->image = $request->file('image')->store('profil');
+        $user->save();
 
-        if ($user) {
-            $validate = null;
-            if (Auth::user()->email == $request['email']) {
-                $validate = $request->validate([
-                    'name' => "required|min:2",
-                    'email' => "required|email"
-                ]);
-            } else {
-                $validate = $request->validate([
-                    'name' => "required|min:2",
-                    'email' => "required|email|unique:users"
-                ]);
-            }
 
-            if ($validate) {
-                $user->name = $request["name"];
-                $user->email = $request["email"];
-
-                $user->save();
-
-                $request->session()->flash("success", 'Profil Anda sudah berhasil di-edit!');
-                return redirect()->back();
-            } else {
-                return redirect()->back();
-            }
-        } else {
-            return redirect()->back();
+        $request->session()->flash("success", 'Profil Anda sudah berhasil di-edit!');
+        return redirect('/user')->with("success", 'Profil Anda sudah berhasil di-edit!');
         }
-    }
 }

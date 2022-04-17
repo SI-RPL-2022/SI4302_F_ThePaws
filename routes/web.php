@@ -45,10 +45,10 @@ Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 //user route
 // Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
 // Route::get('/user', 'App\Http\Controllers\UserController@profile')->name('user.profile');
-Route::get('/user', 'App\Http\Controllers\UserController@profile')->name('user.profile');
-Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user.edit');
-Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
-Route::post('/user/photo','App\Http\Controllers\UserController@upload')->name('user.upload');
+Route::get('/user', [UserController::class, 'profile'])->name('user.profile');
+Route::get('/edit/user', [UserController::class, 'edit'])->name('user.edit');
+Route::patch('/edit/user', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/photo',[UserController::class, 'upload'])->name('user.upload');
 
 // //admin route
 Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.home')->middleware('is_admin');

@@ -1,6 +1,8 @@
 @extends('user-layouts.main')
 @section('container')
-
+@php
+use Illuminate\Support\Carbon;
+@endphp
 
 <div class="container-fluid" style="min-height: 768px; background-color: #F2F2F2;">
   <div class="row">
@@ -12,78 +14,83 @@
           <div class="container" style="margin-top:5ex">
             <div class="row">
               <!-- left column -->
-              <div class="col-md-3">
+              <div class="col-md-5">
                 <div class="text-center">
-                  <img src="/img/Userjennie.png" class="avatar img-circle" alt="avatar" width="250px">
+                  <b><p>Foto Profil</p></b>
+                  @if (empty($user->image))
+                  <p>Anda belum melengkapi data diri anda</p>
+                  @else
+                  <img src="{{ asset($user->image) }}" class="avatar img-circle" alt="avatar" width="250px">
+                  @endif
                 </div>
               </div>
 
               <!-- edit form column -->
-              <div class="col-md-9 personal-info">
-
-                <form class="form-horizontal" role="form" action="{{ route('user.profile')}}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Nama Lengkap</label>
-                    <div class="col-lg-8">
-                      <input class="form-control" type="text" value="Jane">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Alamat Email</label>
-                    <div class="col-lg-8">
-                      <input class="form-control" type="text" value="janesemail@gmail.com">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Jenis Kelamin</label>
-                    <div class="col-lg-8">
-                      <label class="radio-inline"> <input type="radio" name="gender">Laki-Laki</label>
-                      <label class="radio-inline"><input type="radio" name="gender">Perempuan</label>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Tanggal lahir</label>
-                    <div class="col-lg-8">
-                      <div class="input-group date" id="datepicker">
-                        <input type="date" class="form-control" id="date" />
-                        <span class="input-group-append">
-                          <span class="input-group-text bg-light d-block">
-                            <i class="fa fa-calendar"></i>
-                          </span>
-                        </span>
+              <div class="col-md-7  personal-info">
+                @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ session('success') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                @elseif (session()->has('error'))
+                <div class="alert alert-error alert-dismissible fade show" role="alert">
+                  {{ session('error') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                @endif
+                <div class="mb-3 container-grid">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="row">
+                              <b>Nama Lengkap</b>
+                              @if (empty($user->name))
+                                  <p>Anda belum melengkapi data diri anda</p>
+                              @else
+                                  <p>{{ $user->name }}</p>
+                              @endif
+                          </div>
+                          <div class="row">
+                              <b>Email</b>
+                              @if (empty($user->email))
+                                  <p>Anda belum melengkapi data diri anda</p>
+                              @else
+                                  <p>{{ $user->email }}</p>
+                              @endif
+                          </div>
+                          <div class="row">
+                              <b>Tanggal Lahir</b>
+                              @if (empty($user->tanggal_lahir))
+                                  <p>Anda belum melengkapi data diri anda</p>
+                              @else
+                                  <p>{{ Carbon::parse($user->tanggal_lahir)->translatedFormat('l, d F Y') }}</p>
+                              @endif
+                          </div>
+                          <div class="row">
+                              <b>Jenis Kelamin</b>
+                              @if (empty($user->jenis_kelamin))
+                                  <p>Anda belum melengkapi data diri anda</p>
+                              @else
+                                  <p>{{ $user->jenis_kelamin }}</p>
+                              @endif
+                          </div>
+                          <div class="row">
+                              <b>Alamat</b>
+                              @if (empty($user->alamat))
+                                  <p>Anda belum melengkapi data diri anda</p>
+                              @else
+                                  <p>{{ $user->alamat }}</p>
+                              @endif
+                          </div>
                       </div>
-                    </div>
                   </div>
-
-
-                  <div class="form-group">
-                    <label class="col-md-3 control-label">Alamat</label>
-                    <div class="col-md-8">
-                      <textarea class="form-control" id="form7Example7" rows="4">
-                            </textarea>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-3 control-label">Foto Profile</label>
-                    <div class="col-md-8">
-                      <input type="file" class="form-control" name="image">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                      <!-- <input type="button" class="btn btn-primary" value="Simpan"> -->
-                      <input type="submit" class="btn btn-primary" value="Simpan">
-                      <span></span>
-                      <input type="reset" class="btn btn-default" value="Cancel">
-                    </div>
-                  </div>
-                </form>
+              </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col d-flex justify-content-center mb-3">
+                  <a class="btn paws-peach-btn" href="{{ route("user.edit") }}" role="button" style="background-color: #f87575; color: white; border-radius: 2em; border: 0;">Edit Profil</a>
+              </div> 
+          </div>
           </div>
         </div>
       </div>
