@@ -1,10 +1,10 @@
 <?php
-  
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-  
-class CreateblogsTable extends Migration
+
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,14 +16,17 @@ class CreateblogsTable extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('jenis');
-            $table->string('kategori');
-            $table->string('cover');
-            $table->longText('deskripsi'); 
+            $table->unsignedBigInteger('kategori1');
+            $table->foreign('kategori1')->references('id')->on('kategoris')->onDelete('cascade');
+            $table->unsignedBigInteger('kategori2');
+            $table->foreign('kategori2')->references('id')->on('kategoris2')->onDelete('cascade');
+            $table->string('creator');
+            $table->string('foto');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }
-  
+
     /**
      * Reverse the migrations.
      *

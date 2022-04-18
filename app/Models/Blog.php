@@ -1,15 +1,15 @@
 <?php
-  
+
 namespace App\Models;
-  
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-  
-class blogs extends Model
+
+class Blog extends Model
 {
     use HasFactory;
   
     protected $fillable = [
-        'judul', 'jenis' , 'kategori' ,'created_at' ,'cover', 'deskripsi'
+        'judul', 'jenis' , 'kategori' ,'created_at' ,'cover', 'deskripsi', 'updated_at'
     ];
 }

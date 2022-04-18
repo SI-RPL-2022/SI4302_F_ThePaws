@@ -13,7 +13,7 @@
                         <a class="text-white">Adoption</a>
                     </p>
                     <p>
-                        <a class="text-white">Blogs</a>
+                        <a class="text-white" href="/blogs">Blogs</a>
                     </p>
                     <p>
                         <a class="text-white">CaRecommend</a>
@@ -36,13 +36,13 @@
                 <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold text-center">
-                        FAQ
+                        <a href="/faq" style="text-decoration: none; color:white">FAQ</a>
                     </h6>
                 </div>
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">
-                        About Us
+                        <a href="/aboutus" style="text-decoration: none; color:white">About Us</a>
                     </h6>
                     <p>
                         ThePaws adalah website yang dapat membantu kamu

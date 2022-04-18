@@ -2,7 +2,7 @@
 @section('container')
 
 
-<h1><b>FAQ</b></h1>
+<h1 style="margin-top: 3ex"><b>FAQ</b></h1>
 <div class="container container-title text-start">
     <div class="row background p-3">
         <div class="col-12 pb-3" >

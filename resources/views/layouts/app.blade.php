@@ -47,6 +47,7 @@
                         </li>
                     </ul>
 
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -71,7 +72,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin') }}">
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
                                     {{__('Dashboard')}}
                                 </a>
 

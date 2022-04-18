@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
-@section('content')
-<div class="container">
+@section('container')
+<div class="container mx-auto my-auto mt-3">
     <div class="row align-items-center" >
         <div class="col-12 col-md-12 col-lg-4">
             <div class="d-flex align-items-center">

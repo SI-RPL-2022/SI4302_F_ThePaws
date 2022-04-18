@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\blogsController;
+use App\Http\Controllers\WebController;
 use App\Http\Controllers\BlogController;
 
 
@@ -21,50 +22,61 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/', [WebController::class, 'index'])->name('landing.page');
 
 Route::get('/faq', function () {
     return view('faq');
+});
 
+Route::get('/aboutus', function () {
+    return view('aboutus');
 });
 
 Route::get('blogs', function () {
-	return view('blogs');
+    return view('blogs');
 });
 Route::get('blogs/create', function () {
-	return view('blogs.create');
+    return view('blogs.create');
 });
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 
-// Route::get ('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show'); 
-
-// //user route
-// // Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
-
-// Route::get('/user/{id}', 'App\Http\Controllers\UserController@profile')->name('user.profile');
-// Route::get('/edit/user', 'App\Http\Controllers\UserController@edit')->name('user.edit');
-// Route::post('/edit/user', 'App\Http\Controllers\UserController@update')->name('user.update');
+//user route
+// Route::get('/admin', "App\Http\Controllers\AdminController@index")->name('admin');
+// Route::get('/user', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+Route::get('/user', [UserController::class, 'profile'])->name('user.profile');
+Route::get('/edit/user', [UserController::class, 'edit'])->name('user.edit');
+Route::patch('/edit/user', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/photo',[UserController::class, 'upload'])->name('user.upload');
 
 // //admin route
-Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard');
+Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.home')->middleware('is_admin');
 Route::get('/admin/category', [AdminController::class, 'showCategory'])->name('admin.category');
-Route::get('/admin/category/tambah', [AdminController::class, 'tambahCategory'])->name('admin.category.tambah');
-Route::post('/admin/category/tambah', [AdminController::class, 'storeCategory'])->name('admin.category.store');
-Route::get('/admin/category/edit/{id}', [AdminController::class, 'editCategory'])->name('admin.category.edit');
-Route::post('/admin/category/update/{id}', [AdminController::class, 'updateCategory'])->name('admin.category.update');
-Route::get('/admin/category/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.category.delete');
+Route::get('/admin/category1/tambah', [AdminController::class, 'tambahCategory1'])->name('admin.category1.tambah');
+Route::post('/admin/category1/tambah', [AdminController::class, 'storeCategory1'])->name('admin.category1.store');
+Route::get('/admin/category2/tambah', [AdminController::class, 'tambahCategory2'])->name('admin.category2.tambah');
+Route::post('/admin/category2/tambah', [AdminController::class, 'storeCategory2'])->name('admin.category2.store');
+Route::get('/admin/category1/edit/{id}', [AdminController::class, 'editCategory1'])->name('admin.category1.edit');
+Route::post('/admin/category1/update/{id}', [AdminController::class, 'updateCategory1'])->name('admin.category1.update');
+Route::get('/admin/category2/edit/{id}', [AdminController::class, 'editCategory2'])->name('admin.category2.edit');
+Route::post('/admin/category2/update/{id}', [AdminController::class, 'updateCategory2'])->name('admin.category2.update');
+Route::get('/admin/category1/delete/{id}', [AdminController::class, 'deleteCategory1'])->name('admin.category1.delete');
+Route::get('/admin/category1/delete/{id}', [AdminController::class, 'deleteCategory1'])->name('admin.category1.delete');
+Route::get('/admin/category2/delete/{id}', [AdminController::class, 'deleteCategory2'])->name('admin.category2.delete');
+Route::get('/admin/category2/delete/{id}', [AdminController::class, 'deleteCategory2'])->name('admin.category2.delete');
+Route::get('/admin/blogs', [AdminController::class, 'indexBlog'])->name('blogs.admin');
+Route::post('/admin/blogs/create', [AdminController::class, 'storeBlog'])->name('blogs.store');
+Route::get('/admin/blogs/create', [AdminController::class, 'createBlog'])->name('blogs.create');
+Route::get('/admin/blogs/edit/{id}', [AdminController::class, 'editBlog'])->name('blogs.edit');
+Route::post('/admin/blogs/update/{id}', [AdminController::class, 'updateBlog'])->name('blogs.update');
+Route::get('/admin/blogs/delete/{id}', [AdminController::class, 'destroyBlog'])->name('blogs.destroy');
 
-Route::get ('/blogs/index', [blogsController::class, 'show'])->name('blogs.show'); 
-Route::get('blogs', [blogsController::class, 'index'])->name('blogs.index');
-Route::post('/blogs/create', [blogsController::class, 'store'])->name('blogs.store');
-Route::get('blogs/create', [blogsController::class, 'create'])->name('blogs.create');
-Route::get('blogs/edit/{id}', [blogsController::class, 'edit'])->name('blogs.edit');
-Route::post('blogs/update/{id}', [blogsController::class, 'update'])->name('blogs.update');
-Route::get('blogs/delete/{id}', [blogsController::class, 'destroy'])->name('blogs.destroy');
-Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+
+Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
+Route::get('/blogs', [blogsController::class, 'index'])->name('blogs.all');
+// Route::get('/blogs/{id}', [blogsController::class, 'details'])->name('blogs.details');{}{}
+
+// Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+Route::get('/profile/edit', [UserController::class, 'edit'])->name('user.profile.edit');
+Route::post('/profile/edit', [UserController::class, 'update'])->name('user.profile.update');
