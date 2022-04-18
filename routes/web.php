@@ -38,6 +38,10 @@ Route::get('blogs', function () {
 Route::get('blogs/create', function () {
     return view('blogs.create');
 });
+
+Route::get('blogs/filter', function(){
+    return view('blogs.filter');
+});
 Auth::routes();
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
