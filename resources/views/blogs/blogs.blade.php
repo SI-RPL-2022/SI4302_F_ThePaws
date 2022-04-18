@@ -75,6 +75,7 @@
                     <div class="card-body">
                         <div class="col-12">
                             @foreach ($kategori1 as $key)
+                            <a href="/blogs/filter/{{ $key->nama }}" class="text-decoration-none text-dark">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class=" fs-6">
@@ -85,8 +86,7 @@
                                     <div class="col-5">
                                         <div class=" fs-6">
                                             @if ($key->nama == 'Anjing')
-                                                <span class="badge rounded-pill"
-                                                    style="background-color:#0000FF;">{{ $blogs->where('kategori1', $key->id)->count() }}</span>
+                                                <span class="badge rounded-pill" style="background-color:#0000FF;">{{ $blogs->where('kategori1', $key->id)->count() }}</span>
                                             @elseif($key->nama == 'Kucing')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#FF0000;">{{ $blogs->where('kategori1', $key->id)->count() }}</span>
@@ -94,6 +94,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </a>
                                 <div class="row">
                                     <div class="col-2">
                                     </div>
@@ -104,6 +105,7 @@
                             @endforeach
 
                             @foreach ($kategoris as $key)
+                            <a href="/blogs/filter/{{ $key->nama }}" class="text-decoration-none text-dark">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class=" fs-6">
@@ -126,6 +128,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </a>
                                 <div class="row">
                                     <div class="col-2">
                                     </div>

@@ -44,11 +44,26 @@ class blogsController extends Controller
         $kategoris = Kategori2::all();
         return view('blogs.blogsdetails', compact('blog', 'blogs', 'kategori1', 'kategoris'));
     }
-    // public function destroy(blogs $blogs)
-    // {
-    //     $blogs->delete();
+    public function filter(Request $request)
+    {   
+        $nama = $request->nama;
+        $kategoris1 = Kategori::all();
+        $kategoris2 = Kategori2::all();
+        if (($kategori1 = Kategori::where('nama', $nama)->first())){
+            $blogs = Blog::where('kategori1', $kategori1->id)->get();
+            return view('blogs.filter', compact('blogs', 'nama', 'kategoris1', 'kategoris2'));
+        } elseif (($kategoris = Kategori2::where('nama', $nama)->first())) {
+            $blogs = Blog::where('kategori2', $kategoris->id)->get();
+            return view('blogs.filter', compact('blogs', 'nama', 'kategoris1', 'kategoris2'));
+        } else {
+            dd('tidak ditemukan');
+        }
+    }
+    public function destroy(Blog $blogs)
+    {
+        $blogs->delete();
 
-    //     return redirect()->route('blogs.index')
-    //                     ->with('success','blogs deleted successfully');
-    // }
+        return redirect()->route('blogs.index')
+                        ->with('success','blogs deleted successfully');
+    }
 }
