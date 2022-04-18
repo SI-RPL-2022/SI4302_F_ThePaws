@@ -116,10 +116,10 @@
                                             @if ($key->nama == 'Penyakit')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#FFDF00;">{{ $blogs->where('kategori2', $key->id)->count() }}</span>
-                                            @elseif($key->nama == 'First Aid')
+                                            @elseif($key->nama == 'Perawatan')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#00FF00;">{{ $blogs->where('kategori2', $key->id)->count() }}</span>
-                                            @elseif($key->nama == 'Perawatan')
+                                            @elseif($key->nama == 'First Aid')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#FF69B4;">{{ $blogs->where('kategori2', $key->id)->count() }}</span>
                                             @endif
@@ -185,7 +185,7 @@
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-3 text-center mt-2" style="border-bottom:4px solid #F87575;">
-                            <h5><b>Informasi Pertolongan Pertama</b></h5>
+                            <h5><b>Informasi Perawatan</b></h5>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                             @php
@@ -225,7 +225,7 @@
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-3 text-center mt-2" style="border-bottom:4px solid #F87575;">
-                            <h5><b>Informasi Perawatan</b></h5>
+                            <h5><b>Informasi Pertolongan Pertama</b></h5>
                         </div>
 
                         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">

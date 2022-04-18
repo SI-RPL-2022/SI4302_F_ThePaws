@@ -96,10 +96,10 @@
                                             @if ($key->nama == 'Penyakit')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#FFDF00;">{{ $blogs->where('kategori2', $key->id)->count() }}</span>
-                                            @elseif($key->nama == 'First Aid')
+                                            @elseif($key->nama == 'Perawatan')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#00FF00;">{{ $blogs->where('kategori2', $key->id)->count() }}</span>
-                                            @elseif($key->nama == 'Perawatan')
+                                            @elseif($key->nama == 'First Aid')
                                                 <span class="badge rounded-pill"
                                                     style="background-color:#FF69B4;">{{ $blogs->where('kategori2', $key->id)->count() }}</span>
                                             @endif
