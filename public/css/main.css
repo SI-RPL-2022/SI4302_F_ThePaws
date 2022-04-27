@@ -6,76 +6,63 @@ body {
     background-repeat: no-repeat;
     text-align: center;
 }
-
 .custom-nav .navbar-brand img {
     width: 150px;
     height: auto;
     margin-top: -7px;
 }
-
 .custom-nav .navbar-brand span {
     color: #f87575;
     font-weight: 700;
     font-size: 1.4rem;
     margin-left: 0.5rem;
 }
-
 .bg-paws {
     background-color: #f87575;
 }
-
 .custom-nav #navbarNav .navbar-nav .nav.item {
     color: #f87575;
     font-weight: 500;
     margin-left: 2em;
 }
 /*# sourceMappingURL=main.css.map */
-
 .nav-link {
     color: #f87575;
     font-weight: 500;
     margin-left: 5em;
 }
-
 .text-paws {
     color: #f87575 !important;
     font-weight: 500;
     text-transform: uppercase;
     margin-left: 2.4em;
 }
-
 .sign-in-button {
     margin-left: 30em;
     width: 7em;
 }
-
 .sign-up-button {
     margin-left: 2.4em;
     width: 7em;
 }
-
 .paws-blue-btn {
     background-color: #8db1f3;
     color: white;
     border-radius: 2em;
     border: 0;
 }
-
 .paws-peach-btn {
     background-color: #f87575;
     color: white;
     border-radius: 2em;
     border: 0;
 }
-
 .explore-more-button {
     width: 10em;
 }
-
 .img-title {
     width: 250px;
 }
-
 .container-title {
     margin-top: 3em;
     padding: 0 8em 0 8em;
@@ -97,29 +84,73 @@ body {
     margin-bottom: 7em;
     padding: 0 7em 0 7em;
 }
-
 .text-pangolin {
     font-family: "Pangolin";
     font-size: 60px;
 }
-
 .text-roboto {
     font-size: 1.2em;
 }
-
 .card .img-fluid {
     width: 100%;
     height: 15vw;
     object-fit: cover;
 }
-
 .img-aboutus {
     width: 100%;
     height: 20vw;
     object-fit: cover;
 }
-
 .container-aboutus {
     margin-top: 3em;
     margin-bottom: 3em;
 }
+#carouselExampleCaptions .carousel-item img {
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+    height: 50vh;
+}
+.crop-text-4 {
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.crop-text-1 {
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+img .blogs-img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.card-img-top {
+        width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.bg-paws-blue {
+    background-color: #B9E6FF;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.checked {
+    color: orange;
+}
+
+.orange-color {
+    color: orange;
+}
+
+.fa-star-half-o{
+    color: orange
+} 
