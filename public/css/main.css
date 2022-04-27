@@ -172,3 +172,15 @@ img .blogs-img {
 .text-justify {
     text-align: justify;
 }
+
+.checked {
+    color: orange;
+}
+
+.orange-color {
+    color: orange;
+}
+
+.fa-star-half-o{
+    color: orange
+}
