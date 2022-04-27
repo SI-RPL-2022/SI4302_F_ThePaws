@@ -39,9 +39,9 @@ Route::get('blogs/create', function () {
     return view('blogs.create');
 });
 
-Route::get('blogs/filter', function(){
-    return view('blogs.filter');
-});
+// Route::get('blogs/filter', function(){
+//     return view('blogs.filter');
+// });
 Auth::routes();
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
@@ -79,6 +79,7 @@ Route::get('/admin/blogs/delete/{id}', [AdminController::class, 'destroyBlog'])-
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 Route::get('/blogs', [blogsController::class, 'index'])->name('blogs.all');
+Route::get('/blogs/filter/{nama}', [blogsController::class, 'filter'])->name('blogs.filter');
 // Route::get('/blogs/{id}', [blogsController::class, 'details'])->name('blogs.details');{}{}
 
 // Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
