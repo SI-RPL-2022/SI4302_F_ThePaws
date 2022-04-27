@@ -43,6 +43,14 @@ Route::get('pethouse', function () {
     return view('pethouse');
 });
 
+Route::get('/admin/editpethouse', function () {
+    return view('admin.editpethouse');
+});
+
+Route::get('/admin/editpethouse1', function () {
+    return view('admin.editpethouse1');
+});
+
 // Route::get('blogs/filter', function(){
 //     return view('blogs.filter');
 // });
