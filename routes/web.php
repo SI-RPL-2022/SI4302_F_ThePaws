@@ -39,6 +39,10 @@ Route::get('blogs/create', function () {
     return view('blogs.create');
 });
 
+Route::get('pethouse', function () {
+    return view('pethouse');
+});
+
 // Route::get('blogs/filter', function(){
 //     return view('blogs.filter');
 // });
