@@ -32,6 +32,9 @@ Route::get('/faq', function () {
 Route::get('blogs', function () {
     return view('blogs');
 });
+Route::get('pethouse', function () {
+    return view('pethouse');
+});
 
 Auth::routes();
 
