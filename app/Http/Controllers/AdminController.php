@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Kategori;
 use App\Models\Kategori2;
+use App\Models\Pethouse;
 
 use Illuminate\Support\Facades\Session;
 
@@ -236,6 +237,71 @@ public function createBlog()
 
         $blogs = Blog::findOrFail($id);
         $delete = $blogs->delete();
+
+        if ($delete) {
+            Session::flash('success', 'Berhasil hapus data');
+            return redirect()->back();
+        } else {
+            Session::flash('errors', 'Gagal hapus data');
+            return redirect()->back();
+        }
+    }
+
+    public function showPethouse()
+    {
+        $data = Pethouse::all();
+
+        return view('admin.show_pethouse', compact('data'));
+    }
+    
+    public function tambahPethouse()
+    {
+        return view('admin.tambah_pethouse');
+    }
+
+    public function editPethouse($id)
+    {
+        $pethouses = Pethouse::find($id);
+        return view('admin.edit_pethouse', compact('pethouses'));
+    }
+
+    public function storePethouse(Request $request)
+    {
+        // $validate = $request->validate([
+        //     'nama' => 'required'
+        // ]);
+
+        // $category = Pethouse::create([
+        //     'nama' => $request->nama
+        // ]);
+
+        // return redirect(route('admin.pethouse'))->with('success2', 'Data Berhasil Ditambahkan');
+        $request->validate([
+            'nama' => 'required',
+            'kategori' => 'required',
+        ]);
+        if ($cover = $request->file('cover')) {
+            $destinationPath = 'img';  
+            $fileSource2 = $cover->getClientOriginalName();
+            $cover->move($destinationPath, $fileSource2);
+        }
+
+        $data_pethouse = new Pethouse;
+        $data_pethouse->nama = $request->nama;
+        $data_pethouse->kategori = $request->kategori;
+        // $data_pethouse->creator = 'Admin';
+        $data_pethouse->cover = $fileSource2;
+        $data_pethouse->save();
+
+        return redirect()->route('admin.pethouse')
+            ->with('success', 'Pethouse added successfully.');
+    }
+
+    public function destroyPethouse($id)
+    {
+
+        $pethouses = Pethouse::findOrFail($id);
+        $delete = $pethouses->delete();
 
         if ($delete) {
             Session::flash('success', 'Berhasil hapus data');

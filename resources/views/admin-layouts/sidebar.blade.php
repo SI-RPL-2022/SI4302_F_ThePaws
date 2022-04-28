@@ -55,7 +55,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" style="color: white" href="#">
+            <a class="nav-link" style="color: white" href="{{ route('admin.pethouse') }}">
                 <i class="fas fa-fw fa-house"></i>
                 <span>Pethouse</span></a>
         </li>

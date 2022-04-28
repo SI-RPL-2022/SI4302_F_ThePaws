@@ -55,6 +55,7 @@ Route::patch('/edit/user', [UserController::class, 'update'])->name('user.update
 Route::post('/user/photo',[UserController::class, 'upload'])->name('user.upload');
 
 // //admin route
+// category
 Route::get('/admin', [AdminController::class, 'dashboardAdmin'])->name('admin.home')->middleware('is_admin');
 Route::get('/admin/category', [AdminController::class, 'showCategory'])->name('admin.category');
 Route::get('/admin/category1/tambah', [AdminController::class, 'tambahCategory1'])->name('admin.category1.tambah');
@@ -69,6 +70,8 @@ Route::get('/admin/category1/delete/{id}', [AdminController::class, 'deleteCateg
 Route::get('/admin/category1/delete/{id}', [AdminController::class, 'deleteCategory1'])->name('admin.category1.delete');
 Route::get('/admin/category2/delete/{id}', [AdminController::class, 'deleteCategory2'])->name('admin.category2.delete');
 Route::get('/admin/category2/delete/{id}', [AdminController::class, 'deleteCategory2'])->name('admin.category2.delete');
+
+// blogs
 Route::get('/admin/blogs', [AdminController::class, 'indexBlog'])->name('blogs.admin');
 Route::post('/admin/blogs/create', [AdminController::class, 'storeBlog'])->name('blogs.store');
 Route::get('/admin/blogs/create', [AdminController::class, 'createBlog'])->name('blogs.create');
@@ -76,12 +79,20 @@ Route::get('/admin/blogs/edit/{id}', [AdminController::class, 'editBlog'])->name
 Route::post('/admin/blogs/update/{id}', [AdminController::class, 'updateBlog'])->name('blogs.update');
 Route::get('/admin/blogs/delete/{id}', [AdminController::class, 'destroyBlog'])->name('blogs.destroy');
 
-
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 Route::get('/blogs', [blogsController::class, 'index'])->name('blogs.all');
 Route::get('/blogs/filter/{nama}', [blogsController::class, 'filter'])->name('blogs.filter');
 // Route::get('/blogs/{id}', [blogsController::class, 'details'])->name('blogs.details');{}{}
-
 // Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
+
+// pethouse
+Route::get('/admin/pethouse', [AdminController::class, 'showPethouse'])->name('admin.pethouse');
+// Route::post('/admin/pethouse/tambah', [AdminController::class, 'tambahPethouse'])->name('admin.pethouse.tambah');
+Route::get('/admin/pethouse/tambah', [AdminController::class, 'tambahPethouse'])->name('admin.pethouse.tambah');
+Route::get('/admin/pethouse/edit/{id}', [AdminController::class, 'editPethouse'])->name('admin.pethouse.edit');
+Route::post('/admin/pethouse/create', [AdminController::class, 'storePethouse'])->name('admin.pethouse.store');
+Route::get('/admin/pethouse/delete/{id}', [AdminController::class, 'destroyPethouse'])->name('admin.pethouse.destroy');
+
+// // user route
 Route::get('/profile/edit', [UserController::class, 'edit'])->name('user.profile.edit');
 Route::post('/profile/edit', [UserController::class, 'update'])->name('user.profile.update');
