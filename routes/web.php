@@ -43,6 +43,10 @@ Route::get('pethouse', function () {
     return view('pethouse');
 });
 
+Route::get('/carecommend', function () {
+    return view('carecommend.carecommend');
+});
+
 Route::get('/admin/editpethouse', function () {
     return view('admin.editpethouse');
 });
