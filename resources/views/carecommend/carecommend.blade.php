@@ -15,17 +15,13 @@
             </div>
         </div>
 
-        <div class="col-7 pt-5 pb-5">
+        <div class="col-7 pt-5">
             <div class="card border-dark mb-3" style="max-width: 40rem;">
-                <div class="row">
-                    <div class="col-sm-6 pt-5">
-                        <img  alt="100%x280" width="120" height="120" src="img/carecommend/cat 1.png"> <br>
-                        <div class="mt-3"> <p>Kucing</p></div>
-                    </div>
-                    <div class="col-sm-6 pt-5">
-                        <img  alt="100%x280" width="120" height="120" src="img/carecommend/doggo 1.png">
-                        <div class="mt-3"> <p>Anjing</p></div>
-                    </div>
+                <div class="col-sm-6 pt-5">
+                    <img  alt="100%x280" width="120" height="120" src="img/carecommend/cat 1.png">
+                </div>
+                <div class="col-sm-6 pt-5">
+                    <img  alt="100%x280" width="120" height="120" src="img/carecommend/cat 1.png">
                 </div>
                 <div class="card-body " align="center">
                     <form>
