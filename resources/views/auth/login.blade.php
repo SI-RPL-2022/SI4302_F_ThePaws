@@ -39,16 +39,6 @@
                                 @enderror
                             </div>
 
-                            <div class="d-grid gap-3 col-20 mx-auto">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button type="submit" class="btn btn-primary" style="margin-top: 50px;">
                                     {{ __('Login') }}

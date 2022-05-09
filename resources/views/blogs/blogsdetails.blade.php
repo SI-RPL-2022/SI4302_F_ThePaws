@@ -38,12 +38,35 @@
                             <b>&nbsp;.&nbsp;</b>
                             {{ Carbon::parse($blog->updated_at)->translatedFormat('l, d F Y H:m:s') }}</small>
                     </div>
-                    <img src="{{ asset('img/' . $blog->foto . '') }}" class="card img-top rounded" width="720px">
-                    <div align="justify" style="font-size:15px;">
-                        <p class="mt-3">{{ $blog->deskripsi }}</p>
+                        <img src="{{ asset('img/' . $blog->foto . '') }}" class="card img-top rounded" width="720px">
+                            <div align="justify" style="font-size:15px;">
+                                <p class="mt-3">{{ $blog->deskripsi }}</p>
+                            </div>
+
+                    {{-- FE KOMENTAR --}}
+                        <form action="#" method="#">
+
+                            <div class="form-group">
+                                <p for="" style="text-align: left;"><b>Leave A Comment</b></p>
+                                <input type="text" name="id_user"  hidden>
+                                <input type="text" name="id_berita"  hidden>
+                                <textarea placeholder="Tulis Komentar..." name="komentar" class="form-control form-control-sm " cols="4" rows="4" style="resize:none;"></textarea>
+
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>ALERT</strong>
+                                    </span>
+
+                                <button type="submit" class="btn btn-sm btn-primary mt-2" style="font-size:12px; ">Posting Komentar</button>
+                            </div>
+                        </form>
+
+                    <div class="text-center fw-bold" style="font-size:13px;">
+                        Silahkan Login terlebih dahulu, sebelum memberikan komentar! <a href="{{ url('/login') }}" class="text-decoration-none"><small>Login Disini</small></a>
                     </div>
+
                 </div>
             </div>
+
             <div class="col-1"></div>
             <div class="col-4 mt-3">
                 <div class="" style=" background-color:rgb(255,255,255);">
@@ -117,6 +140,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="" style=" background-color:rgb(255,255,255);">
                     <div class="row justify-content-center">
                         <div class="col-5 col-lg-8 text-center mt-1 mb-3" style="border-bottom:2px solid #F87575;">
