@@ -20,12 +20,9 @@
     <h3>OUR SERVICES</h3>
     <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -43,14 +40,16 @@
                         </a>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img class="img-fluid" alt="100%x280" src="img/vet.jpg">
-                            <div class="card-body">
-                                <h4 class="card-title">PetHouse</h4>
-                                <p class="card-text">Dapatkan informasi mengenai klinik hewan terdekat beserta detailnya
-                                </p>
+                        <a href="/pethouse" class="text-decoration-none text-black">
+                            <div class="card">
+                                <img class="img-fluid" alt="100%x280" src="img/vet.jpg">
+                                <div class="card-body">
+                                    <h4 class="card-title">PetHouse</h4>
+                                    <p class="card-text">Dapatkan informasi mengenai klinik hewan terdekat beserta detailnya
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-4 mb-3">
                         <div class="card">
@@ -87,13 +86,11 @@
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
             <span class="carousel-control-prev-icon shadow rounded" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
             <span class="carousel-control-next-icon shadow rounded" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -104,9 +101,9 @@
     <h3>LATEST BLOG POSTS</h3>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             @foreach($blogs->take(1) as $key)
@@ -114,7 +111,9 @@
             <div class="carousel-item active">
                 <img src="{{ asset('img/'.$key->foto.'') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                <a href="{{ '/blogs/'.$key->id.'' }}" class="text-decoration-none text-white"><h5>{{ $key->judul }}</h5></a>
+                    <a href="{{ '/blogs/'.$key->id.'' }}" class="text-decoration-none text-white">
+                        <h5>{{ $key->judul }}</h5>
+                    </a>
                 </div>
             </div>
             @endforeach
@@ -123,20 +122,22 @@
             <div class="carousel-item">
                 <img src="{{ asset('img/'.$key->foto.'') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <a href="{{ '/blogs/'.$key->id.'' }}" class="text-decoration-none text-white"><h5>{{ $key->judul }}</h5></a>
+                    <a href="{{ '/blogs/'.$key->id.'' }}" class="text-decoration-none text-white">
+                        <h5>{{ $key->judul }}</h5>
+                    </a>
                 </div>
             </div>
             @endif
             @endforeach
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
 @endsection

@@ -24,7 +24,7 @@
                         <h2>Tambah Pethouse</h2>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('admin.pethouse.store') }}"> Back</a>
+                        <a class="btn btn-primary" href="{{ route('admin.pethouse') }}"> Back</a>
                     </div>
 
                     @if ($errors->any())
@@ -47,7 +47,6 @@
                                 <div class="form-group">
                                     <strong>Nama Vet</strong>
                                     <input type="text" class="form-control form-control-sm @error('judul') is-invalid @enderror" name="nama" id="nama">
-
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -76,7 +75,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Jam operasional</strong>
-                                        <input class="form-control" id="jam_operasional" name="jam_operasional" placeholder="jam_operasional"></input>
+                                        <textarea class="form-control" id="jam_operasional" name="jam_operasional" placeholder="jam_operasional" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <label for=""><strong>Cover</strong></label>
@@ -89,7 +88,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <label for=""><strong>Deskripsi tentang Pethouse</strong></label>
-                                <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm @error('deskripsi') is-invalid @enderror"></textarea>
+                                <textarea name="deskripsi" id="deskripsi" rows="6" class="form-control form-control-sm @error('deskripsi') is-invalid @enderror"></textarea>
                                 @error('deskripsi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -101,9 +100,6 @@
                             <button class="btn btn-sm mt-2 fw-bold" type="submit" style="background-color: #8DB1F3;color:white;border-radius:12px;">Tambah</button>
                         </div>
                     </form>
-
-
-
                 </div>
             </div>
         </div>

@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="row table-responsive px-3">
-                <table class="table table-bordered" style="background-color: #FFFFFF; border-color: lightgrey;">
+                <table class="table" style="background-color: #FFFFFF; border-color: lightgrey;">
                     <thead class="text-center text-nowrap">
                         <tr>
                             <th scope="col">No</th>
