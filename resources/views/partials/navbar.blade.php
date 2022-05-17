@@ -18,7 +18,7 @@
                     </li>
                     <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">CaRecommend</a>
                     </li>
-                    <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">PetHouse</a>
+                    <li><a href="/pethouse" style="text-decoration: none; color:black; margin-left:2ex">PetHouse</a>
                     </li>
                     <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">PetCessories</a>
                     </li>

@@ -23,6 +23,7 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', [WebController::class, 'index'])->name('landing.page');
+Route::get('/pethouse', [WebController::class, 'pethouse_index'])->name('pethouse.index');
 
 Route::get('/faq', function () {
     return view('faq');
@@ -37,10 +38,6 @@ Route::get('blogs', function () {
 });
 Route::get('blogs/create', function () {
     return view('blogs.create');
-});
-
-Route::get('pethouse', function () {
-    return view('pethouse');
 });
 
 Route::get('/carecommend', function () {
@@ -91,6 +88,12 @@ Route::get('/admin/blogs/create', [AdminController::class, 'createBlog'])->name(
 Route::get('/admin/blogs/edit/{id}', [AdminController::class, 'editBlog'])->name('blogs.edit');
 Route::post('/admin/blogs/update/{id}', [AdminController::class, 'updateBlog'])->name('blogs.update');
 Route::get('/admin/blogs/delete/{id}', [AdminController::class, 'destroyBlog'])->name('blogs.destroy');
+Route::get('/admin/pethouse', [AdminController::class, 'indexPethouse'])->name('admin.pethouse');
+Route::get('/admin/pethouse/create', [AdminController::class, 'createPethouse'])->name('admin.pethouse.create');
+Route::post('/admin/pethouse/create', [AdminController::class, 'storePethouse'])->name('admin.pethouse.store');
+Route::get('/admin/pethouse/edit/{id}', [AdminController::class, 'editPethouse'])->name('admin.pethouse.edit');
+Route::post('/admin/pethouse/update/{id}', [AdminController::class, 'updatePethouse'])->name('admin.pethouse.update');
+Route::get('/admin/pethouse/delete/{id}', [AdminController::class, 'destroyPethouse'])->name('admin.pethouse.destroy');
 
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');

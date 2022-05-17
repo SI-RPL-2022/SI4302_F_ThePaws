@@ -1,63 +1,302 @@
 @extends('admin-layouts.main')
 @section('container')
-    <div class="container-fluid" style="min-height: 768px; background-color: #F2F2F2;">
-        <div class="row">
-            @include('admin-layouts.sidebar')
-            <div class="col-9 col-sm-10 ">
-
-                <form action="http://127.0.0.1:8000/admin/blogs/create" enctype="multipart/form-data" method="POST"
-                    data-dashlane-rid="e1e5c66d6bb14fd9" data-form-type="other">
-                    <input type="hidden" name="_token" value="IyIlm7NndKblydRoaZ8zN8QMp5ym0KohenyyZWEy">
-                    <div class="row">
-                        <div class="pull-right mt-5 mb-3">
-                            <div class="form-group">
-                                <label for="">Nama Vet</label>
-                                <input type="text" class="form-control form-control-sm " name="judul" id="judul"
-                                    data-dashlane-rid="4189cd566019e46b" data-form-type="other">
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <label for="">Kategori Hewan</label>
-                                <input type="text" class="form-control form-control-sm " name="kategori1" id="kategori1"
-                                    data-dashlane-rid="1aaed23a01360102" data-form-type="other">
-                            </div>
+<div class="container-fluid" style="min-height: 768px; background-color: #F2F2F2;">
+    <div class="row">
+        @include('admin-layouts.sidebar')
+        <div class="col-9 col-sm-10 ">
+            <form
+                action="{{ '/admin/pethouse/update/'.$pethouse->id.'' }}"
+                enctype="multipart/form-data" method="POST">
+                @csrf
+                <div class="form-group mb-3">
+                    <label for="name">Nama Vet</label>
+                    <input type="text" class="form-control form-control-sm @error('name') is-invalid @enderror"
+                        name="name" id="name" value="{{ $pethouse->nama }}">
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="kategori1">Kategori Hewan</label>
+                    <input type="text" class="form-control form-control-sm @error('kategori1') is-invalid @enderror"
+                        name="kategori1" id="kategori1" value="{{ $pethouse->kategori1 }}">
+                    @error('kategori1')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="kategori2">Kategori Informasi</label>
+                    <input type="text" class="form-control form-control-sm @error('kategori2') is-invalid @enderror"
+                        name="kategori2" id="kategori2" value="{{ $pethouse->kategori2 }}">
+                    @error('kategori2')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" class="form-control form-control-sm @error('alamat') is-invalid @enderror"
+                        name="alamat" id="alamat" value="{{ $pethouse->alamat }}">
+                    @error('alamat')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="no_telepon">No Telepon</label>
+                    <input type="text" class="form-control form-control-sm @error('no_telepon') is-invalid @enderror"
+                        name="no_telepon" id="no_telepon" value="{{ $pethouse->no_telepon }}">
+                    @error('no_telepon')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="website">Website</label>
+                    <input type="text" class="form-control form-control-sm @error('website') is-invalid @enderror"
+                        name="website" id="website" value="{{ $pethouse->website }}">
+                    @error('website')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="rating">Rating</label>
+                    <input type="number" class="form-control form-control-sm @error('rating') is-invalid @enderror"
+                        name="rating" id="rating" min="0" max="5" step="0.1" value="{{ $pethouse->rating }}">
+                    @error('rating')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="maps">Maps</label>
+                    <input type="text" class="form-control form-control-sm @error('maps') is-invalid @enderror"
+                        name="maps" id="maps" value="{{ $pethouse->maps }}">
+                    @error('maps')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <h6 class="mb-2">Jam Operasional</h6>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Senin</label>
+                            <input type="text" name="day[1]" id="" value="1" aria-hidden="true" hidden>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Kategori Informasi</label>
-                            <input type="text" class="form-control form-control-sm " name="kategori2" id="kategori2"
-                                data-dashlane-rid="a11e73180e4aff36" data-form-type="other">
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open1" value="{{ empty($workinghours[0]) ? '' : $workinghours[0]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Alamat</label>
-                            <input type="text" class="form-control form-control-sm " name="kategori2" id="kategori2"
-                                data-dashlane-rid="a11e73180e4aff36" data-form-type="other">
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">No Telepon</label>
-                            <input type="text" class="form-control form-control-sm " name="kategori2" id="kategori2"
-                                data-dashlane-rid="a11e73180e4aff36" data-form-type="other">
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Website</label>
-                            <input type="text" class="form-control form-control-sm " name="kategori2" id="kategori2"
-                                data-dashlane-rid="a11e73180e4aff36" data-form-type="other">
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close1" value="{{ empty($workinghours[0]) ? '' : $workinghours[0]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
-                    <label for="">Jam Operasional</label>
-                    <textarea name="jamoperasional" id="jamoperasional" class="form-control form-control-sm " data-dashlane-rid="d117c1ad78de2c59"
-                        data-form-type="other"></textarea>
-                    <label for="">Foto</label>
-                    <input type="file" class="form-control form-control-sm " name="foto" id="foto" value=""
-                        data-dashlane-rid="e1cf8e4fd4557fa6" data-form-type="other">
-                    <label for="">Deskripsi Tentang Peliharaan</label>
-                    <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm " data-dashlane-rid="d117c1ad78de2c59"
-                        data-form-type="other"></textarea>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button class="btn btn-sm mt-2 fw-bold" type="submit"
-                            style="background-color: #8DB1F3;color:white;border-radius:12px;"
-                            data-dashlane-rid="e63890473292f0e6" data-dashlane-label="true"
-                            data-form-type="other">Tambah</button>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Selasa</label>
+                            <input type="text" name="day[2]" id="" value="2" aria-hidden="true" hidden>
+                        </div>
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open2" value="{{ empty($workinghours[1]) ? '' : $workinghours[1]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close2" value="{{ empty($workinghours[1]) ? '' : $workinghours[1]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </form>
-            </div>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Rabu</label>
+                            <input type="text" name="day[3]" id="" value="3" aria-hidden="true" hidden>
+                        </div>
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open3" value="{{ empty($workinghours[2]) ? '' : $workinghours[2]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close3" value="{{ empty($workinghours[2]) ? '' : $workinghours[2]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Kamis</label>
+                            <input type="text" name="day[4]" id="" value="4" aria-hidden="true" hidden>
+                        </div>
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open4" value="{{ empty($workinghours[3]) ? '' : $workinghours[3]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close4" value="{{ empty($workinghours[3]) ? '' : $workinghours[3]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Jumat</label>
+                            <input type="text" name="day[5]" id="" value="5" aria-hidden="true" hidden>
+                        </div>
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open5" value="{{ empty($workinghours[4]) ? '' : $workinghours[4]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close5" value="{{ empty($workinghours[4]) ? '' : $workinghours[4]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Sabtu</label>
+                            <input type="text" name="day[6]" id="" value="6" aria-hidden="true" hidden>
+                        </div>
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open6" value="{{ empty($workinghours[5]) ? '' : $workinghours[5]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close6" value="{{ empty($workinghours[5]) ? '' : $workinghours[5]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col col-1">
+                            <label for="">Minggu</label>
+                            <input type="text" name="day[7]" id="" value="7" aria-hidden="true" hidden>
+                        </div>
+                        <div class="col col-5">
+                            <input type="time" class="form-control form-control-sm @error('open[]') is-invalid @enderror"
+                                name="open[]" id="open7" value="{{ empty($workinghours[6]) ? '' : $workinghours[6]->open }}">
+                            @error('open[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col col-1">-</div>
+                        <div class="col col-5">
+                            <input type="time"
+                                class="form-control form-control-sm @error('close[]') is-invalid @enderror" name="close[]"
+                                id="close7" value="{{ empty($workinghours[6]) ? '' : $workinghours[6]->close }}">
+                            @error('close[]')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="foto">Foto</label>
+                    <input type="file" class="form-control form-control-sm @error('foto') is-invalid @enderror"
+                        name="foto" id="foto" value="{{ old('foto') }}">
+                    @error('foto')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="deskripsi">Deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi"
+                        class="form-control form-control-sm @error('deskripsi') is-invalid @enderror">{{ $pethouse->deskripsi }}</textarea>
+                    @error('deskripsi')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-sm mt-2 fw-bold" type="submit"
+                        style="background-color: #8DB1F3;color:white;border-radius:12px;">Simpan</button>
+            </form>
         </div>
+    </div>
     @endsection

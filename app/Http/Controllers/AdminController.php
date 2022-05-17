@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Kategori;
 use App\Models\Kategori2;
+use App\Models\pethouse;
+use App\Models\Workings;
 
 use Illuminate\Support\Facades\Session;
 
@@ -231,7 +233,133 @@ public function createBlog()
         //                 ->with('success','blogs updated successfully');
     }
 
-        public function destroyBlog($id)
+    public function indexPethouse()
+    {
+        $pethouses = pethouse::latest()->paginate(5);
+        return view('admin.editpethouse', compact('pethouses'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function createPethouse()
+    {
+        return view('admin.create_pethouse');
+    }
+    public function editPethouse($id)
+    {
+        $pethouse = pethouse::find($id);
+        $workinghours = Workings::where('pethouse', $id)->get();
+        // dd(empty($workinghours[0]));
+        return view('admin.editpethouse1', compact('pethouse', 'workinghours'));
+    }
+    public function storePethouse(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => "required",
+            'kategori1' => "required",
+            'kategori2' => 'required',
+            'alamat'=>'required',
+            'no_telepon'=>'required',
+            'website'=>'required',
+            'rating'=>'required',
+            'maps'=>'required',
+            'deskripsi'=>'required',
+            'foto'=>'required',
+        ]);
+        
+        if ($validatedData) {
+            $pethouse = new pethouse;
+            $pethouse->nama = $request->name;
+            $pethouse->kategori1 = $request->kategori1;
+            $pethouse->kategori2 = $request->kategori2;
+            $pethouse->alamat = $request->alamat;
+            $pethouse->no_telepon = $request->no_telepon;
+            $pethouse->website = $request->website;
+            $pethouse->rating = $request->rating;
+            $pethouse->maps = $request->maps;
+            $pethouse->foto = $request->file('foto')->store('vet');
+            $pethouse->deskripsi = htmlspecialchars($request->deskripsi);
+            $pethouse->save();
+            return redirect('/admin/pethouse')->with('success', 'Game Data is successfully updated');
+        }
+        
+        }
+    public function updatePethouse(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => "required",
+            'kategori1' => "required",
+            'kategori2' => 'required',
+            'alamat'=>'required',
+            'no_telepon'=>'required',
+            'website'=>'required',
+            'rating'=>'required',
+            'maps'=>'required',
+            'deskripsi'=>'required',
+            'foto'=>'required',
+        ]);
+        
+        if ($validatedData) {
+            $pethouse = pethouse::find($id);
+            $pethouse->nama = $request->name;
+            $pethouse->kategori1 = $request->kategori1;
+            $pethouse->kategori2 = $request->kategori2;
+            $pethouse->alamat = $request->alamat;
+            $pethouse->no_telepon = $request->no_telepon;
+            $pethouse->website = $request->website;
+            $pethouse->rating = $request->rating;
+            $pethouse->maps = $request->maps;
+            $pethouse->foto = $request->file('foto')->store('vet');
+            $pethouse->deskripsi = htmlspecialchars($request->deskripsi);
+            $pethouse->save();
+
+            $wh = Workings::where('pethouse', $id)->get();
+            if (empty($wh->first())) {
+                foreach ($_POST['day'] as $key => $value) {
+                    $workinghours = new Workings;
+                    $workinghours->pethouse = $id;
+                    $workinghours->day = $key;
+                    // dd($key);
+                    // dd($request['open'][$key-1]);
+                    $workinghours->open = $request['open'][($key)-1];
+                    $workinghours->close = $request['close'][($key)-1];
+                    $workinghours->save();
+                }
+            } else {
+                foreach($wh as $key => $value) {
+                    $id = $value->id;
+                    foreach ($_POST['day'] as $key => $value) {
+                        $workinghours = Workings::find($id);
+                        if ($workinghours->day == $value) {
+                            $workinghours->open = $request['open'][($key)-1];
+                            $workinghours->close = $request['close'][($key)-1];
+                            $workinghours->save();
+                        }
+                    }
+                }
+            }
+            
+            return redirect('/admin/pethouse')->with('success', 'Game Data is successfully updated');
+        }
+        
+        }
+    
+
+
+    public function destroyPethouse($id)
+    {
+
+        $pethouses = pethouse::findOrFail($id);
+        $delete = $pethouses->delete();
+
+        if ($delete) {
+            Session::flash('success', 'Berhasil hapus data');
+            return redirect()->back();
+        } else {
+            Session::flash('errors', 'Gagal hapus data');
+            return redirect()->back();
+        }
+    }
+    public function destroyBlog($id)
     {
 
         $blogs = Blog::findOrFail($id);
