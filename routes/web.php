@@ -24,6 +24,8 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/', [WebController::class, 'index'])->name('landing.page');
 Route::get('/pethouse', [WebController::class, 'pethouse_index'])->name('pethouse.index');
+Route::get('/carecommend', [WebController::class, 'carecommend_index'])->name('carecommend.index');
+Route::post('/carecommend/result', [WebController::class, 'carecommend_result'])->name('carecommend.result');
 
 Route::get('/faq', function () {
     return view('faq');

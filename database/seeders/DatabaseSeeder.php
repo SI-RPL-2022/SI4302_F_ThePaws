@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             kategori2Seeder::class,
             BlogSeeder::class,
             pethouseSeeder::class,
+            FoodSeeder::class,
+            VaccineSeeder::class,
         ]);
     }
     
