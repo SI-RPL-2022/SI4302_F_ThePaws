@@ -5,6 +5,7 @@
     <div class="row mt-3">
         <div class="col-8">
             <div class="card-body text-start">
+                
                 <div class="mb-3 text-start">
                     <h1 class="text-start">PetHouse / details</h1>
                     <br>
