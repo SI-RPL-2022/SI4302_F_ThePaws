@@ -18,23 +18,6 @@
             <strong>Judul:</strong>
             {{ $blog->judul }}
         </div>
-<<<<<<< HEAD
-=======
-            <div class="form-group">
-                <strong>Jenis Hewan:</strong>
-                {{ $blog->jenis }}
-            </div>
-                <div class="form-group">
-                     <strong>Kategori:</strong>
-                     {{ $blog->kategori }}
-            </div>
-                 <div class="form-group">
-                     <strong>Tanggal Pembuatan:</strong>
-                    {{ $blog->created_at }}
-                </div>  
-            </div>
-             </div>
->>>>>>> b7c73f7 (Membuat fitur pengelolaan konten oleh admin pada blog (CRUD) #8)
     </div>
     <div class="form-group">
         <strong>Jenis Hewan:</strong>

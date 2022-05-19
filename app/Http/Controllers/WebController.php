@@ -8,6 +8,8 @@ use App\Models\Kategori2;
 use App\Models\pethouse;
 use App\Models\Food;
 use App\Models\Vaccine;
+use App\Models\Umur;
+use App\Models\BB;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -30,7 +32,9 @@ class WebController extends Controller
     }
 
     public function carecommend_index () {
-        return view('carecommend.carecommend');
+        $umur = Umur::all();
+        $bb = BB::all();
+        return view('carecommend.carecommend', compact('umur', 'bb'));
     }
 
     public function carecommend_result (Request $request) {
@@ -41,10 +45,13 @@ class WebController extends Controller
                     'berat_badan' => 'required',
                     ]);
         if ($validate) {
+            $nama = $request->nama;
+            $umur = Umur::where('id', $request->umur)->value('umur');
+            $bb = BB::where('id', $request->berat_badan)->value('bb');
             $foods = Food::where('umur', $request->umur)->where('berat_badan', $request->berat_badan)->where('kategori', $request->kategori)->get();
             $vaccines = Vaccine::where('umur', $request->umur)->where('berat_badan', $request->berat_badan)->where('kategori', $request->kategori)->get();
             $kategori = $request->kategori;
         }
-        return view('carecommend.result', compact('foods', 'vaccines', 'kategori', 'validate'));
+        return view('carecommend.result', compact('foods', 'vaccines', 'kategori', 'umur', 'bb', 'nama'));
     }
 }

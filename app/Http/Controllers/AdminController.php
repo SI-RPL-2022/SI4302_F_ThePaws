@@ -8,6 +8,10 @@ use App\Models\Kategori;
 use App\Models\Kategori2;
 use App\Models\pethouse;
 use App\Models\Workings;
+use App\Models\Food;
+use App\Models\Vaccine;
+use App\Models\Umur;
+use App\Models\BB;
 
 use Illuminate\Support\Facades\Session;
 
@@ -373,4 +377,256 @@ public function createBlog()
             return redirect()->back();
         }
     }
+
+    public function indexCarecommend()
+    {
+        $data1 = Food::all();
+        $data2 = Vaccine::all();
+        $data3 = Kategori::all();
+        $data4 = Umur::all();
+        $data5 = BB::all();
+
+        return view('admin.carerecommend', compact('data1', 'data2', 'data3', 'data4', 'data5'));
+    }
+
+    public function createFood()
+    {
+        $kategori = Kategori::all();
+        $umur = Umur::all();
+        $bb = BB::all();
+        return view('admin.create_food', compact('kategori', 'umur', 'bb'));
+    }
+
+    public function editFood($id)
+    {
+        $food = Food::find($id);
+        $kategori = Kategori::all();
+        $umur = Umur::all();
+        $bb = BB::all();
+        return view('admin.edit_food', compact('food', 'kategori', 'umur', 'bb'));
+    }
+
+    public function storeFood(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => "required",
+            'kategori' => "required",
+            'umur'=>'required',
+            'berat_badan'=>'required',
+            'deskripsi'=>'required',
+            'foto'=>'required',
+        ]);
+        if ($validatedData) {
+            $food = new Food;
+            $food->nama = $request->name;
+            $food->kategori = $request->kategori;
+            $food->umur = $request->umur;
+            $food->berat_badan = $request->berat_badan;
+            $food->foto = $request->file('foto')->store('food');
+            $food->deskripsi = htmlspecialchars($request->deskripsi);
+            $food->save();
+            return redirect('/admin/carecommend')->with('success', 'Game Data is successfully updated');
+    }
+}
+    public function updateFood(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => "required",
+            'kategori' => "required",
+            'umur'=>'required',
+            'berat_badan'=>'required',
+            'deskripsi'=>'required',
+            'foto'=>'required',
+        ]);
+        if ($validatedData) {
+            $food = Food::find($id);
+            $food->nama = $request->name;
+            $food->kategori = $request->kategori;
+            $food->umur = $request->umur;
+            $food->berat_badan = $request->berat_badan;
+            $food->foto = $request->file('foto')->store('food');
+            $food->deskripsi = htmlspecialchars($request->deskripsi);
+            $food->save();
+            return redirect('/admin/carecommend')->with('success', 'Game Data is successfully updated');
+    }
+}
+
+public function destroyFood($id)
+{
+    $food = Food::findOrFail($id);
+    $delete = $food->delete();
+
+    if ($delete) {
+        Session::flash('success', 'Berhasil hapus data');
+        return redirect()->back();
+    } else {
+        Session::flash('errors', 'Gagal hapus data');
+        return redirect()->back();
+    }
+}
+    public function createVaccine()
+    {
+        $kategori = Kategori::all();
+        return view('admin.create_vaccine', compact('kategori'));
+    }
+
+    public function editVaccine($id)
+    {
+        $vaccine = Vaccine::find($id);
+        $kategori = Kategori::all();
+        return view('admin.edit_vaccine', compact('vaccine', 'kategori'));
+    }
+
+    public function storeVaccine(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => "required",
+            'kategori' => "required",
+            'umur'=>'required',
+            'berat_badan'=>'required',
+            'deskripsi'=>'required',
+        ]);
+        if ($validatedData) {
+            $vaccine = new Vaccine;
+            $vaccine->nama = $request->name;
+            $vaccine->kategori = $request->kategori;
+            $vaccine->umur = $request->umur;
+            $vaccine->berat_badan = $request->berat_badan;
+            $vaccine->deskripsi = htmlspecialchars($request->deskripsi);
+            $vaccine->save();
+            return redirect('/admin/carecommend')->with('success', 'Game Data is successfully updated');
+    }
+}
+    public function updateVaccine(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => "required",
+            'kategori' => "required",
+            'umur'=>'required',
+            'berat_badan'=>'required',
+            'deskripsi'=>'required',
+        ]);
+        if ($validatedData) {
+            $vaccine = Vaccine::find($id);
+            $vaccine->nama = $request->name;
+            $vaccine->kategori = $request->kategori;
+            $vaccine->umur = $request->umur;
+            $vaccine->berat_badan = $request->berat_badan;
+            $vaccine->deskripsi = htmlspecialchars($request->deskripsi);
+            $vaccine->save();
+            return redirect('/admin/carecommend')->with('success', 'Game Data is successfully updated');
+    }
+}
+
+public function destroyVaccine($id)
+{
+    $vaccine = Vaccine::findOrFail($id);
+    $delete = $vaccine->delete();
+
+    if ($delete) {
+        Session::flash('success', 'Berhasil hapus data');
+        return redirect()->back();
+    } else {
+        Session::flash('errors', 'Gagal hapus data');
+        return redirect()->back();
+    }
+}
+
+public function createUmur()
+    {
+        return view('admin.create_umur');
+    }
+
+    public function storeUmur(Request $request)
+    {
+        $validate = $request->validate([
+            'umur' => 'required'
+        ]);
+
+        $umur = Umur::create([
+            'umur' => $request->umur
+        ]);
+
+        return redirect(route('admin.carecommend'))->with('success1', 'Data Berhasil Ditambahkan');
+    }
+
+    public function editUmur($id)
+    {
+        $umur = Umur::find($id);
+
+        return view('admin.edit_umur', compact('umur'));
+    }
+
+    public function updateUmur(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'umur' => 'required'
+        ]);
+        $umur = Umur::find($id);
+        $umur->umur = $request->umur;
+        $umur->save();
+        return redirect(route('admin.carecommend'))->with('success1', 'Data Berhasil Ditambahkan');
+    }
+
+    public function destroyUmur($id)
+{
+    $umur = Umur::findOrFail($id);
+    $delete = $umur->delete();
+
+    if ($delete) {
+        Session::flash('success', 'Berhasil hapus data');
+        return redirect()->back();
+    } else {
+        Session::flash('errors', 'Gagal hapus data');
+        return redirect()->back();
+    }
+}
+public function createBB()
+    {
+        return view('admin.create_berat_badan');
+    }
+
+    public function storeBB(Request $request)
+    {
+        $validate = $request->validate([
+            'bb' => 'required'
+        ]);
+
+        $bb = BB::create([
+            'bb' => $request->bb
+        ]);
+
+        return redirect(route('admin.carecommend'))->with('success1', 'Data Berhasil Ditambahkan');
+    }
+
+    public function editBB($id)
+    {
+        $bb = BB::find($id);
+        return view('admin.edit_berat_badan', compact('bb'));
+    }
+
+    public function updateBB(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'bb' => 'required'
+        ]);
+        $bb = BB::find($id);
+        $bb->bb = $request->bb;
+        $bb->save();
+        return redirect(route('admin.carecommend'))->with('success1', 'Data Berhasil Ditambahkan');
+    }
+
+    public function destroyBB($id)
+{
+    $bb = BB::findOrFail($id);
+    $delete = $bb->delete();
+
+    if ($delete) {
+        Session::flash('success', 'Berhasil hapus data');
+        return redirect()->back();
+    } else {
+        Session::flash('errors', 'Gagal hapus data');
+        return redirect()->back();
+    }
+}
 }

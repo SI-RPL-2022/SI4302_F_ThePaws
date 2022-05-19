@@ -49,7 +49,7 @@
                 <span>Adoption</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" style="color: white" href="#">
+            <a class="nav-link" style="color: white" href="{{ route('admin.carecommend') }}">
                 <i class="fas fa-fw fa-bone"></i>
                 <span>CaRecommend</span></a>
         </li>

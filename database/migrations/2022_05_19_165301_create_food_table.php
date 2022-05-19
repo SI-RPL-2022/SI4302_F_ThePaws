@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarecommendVaccineTable extends Migration
+class CreateFoodTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateCarecommendVaccineTable extends Migration
      */
     public function up()
     {
-        Schema::create('carecommend_vaccine', function (Blueprint $table) {
+        Schema::create('food', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->unsignedBigInteger('kategori');
             $table->foreign('kategori')->references('id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('umur');
-            $table->string('berat_badan');
+            $table->unsignedBigInteger('umur');
+            $table->foreign('umur')->references('id')->on('umur')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('berat_badan');
+            $table->foreign('berat_badan')->references('id')->on('bb')->onDelete('cascade')->onUpdate('cascade');
             $table->text('deskripsi');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateCarecommendVaccineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carecommend_vaccine');
+        Schema::dropIfExists('food');
     }
 }

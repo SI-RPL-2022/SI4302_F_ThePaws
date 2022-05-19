@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             pethouseSeeder::class,
             FoodSeeder::class,
             VaccineSeeder::class,
+            UmurSeeder::class,
+            BBSeeder::class,
         ]);
     }
     

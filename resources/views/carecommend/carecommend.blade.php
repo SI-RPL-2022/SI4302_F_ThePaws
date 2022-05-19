@@ -45,18 +45,18 @@
                                 <label for="">Umur</label>
                                 <select class="form-select" name="umur">
                                     <option selected>Pilih Umur</option>
-                                    <option value="2 - 12 bulan">2 - 12 bulan</option>
-                                    <option value="> 12 bulan">> 12 bulan</option>
+                                    @foreach ($umur as $u)
+                                        <option value="{{ $u->id }}">{{ $u->umur }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3" style="width: 60%" align="left">
                                 <label for="">Berat Badan</label>
                                 <select class="form-select" name="berat_badan" aria-label="Default select example">
                                     <option selected>Pilih Berat Badan</option>
-                                    <option value="< 1.5 kg">
-                                        < 1.5 kg</option>
-                                    <option value="1.5 - 2.5 kg">1.5 - 2.5 kg</option>
-                                    <option value="4.5 - 6.5 kg">4.5 - 6.5 kg</option>
+                                    @foreach ($bb as $b)
+                                        <option value="{{ $b->id }}">{{ $b->bb }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3" style="width: 60%" align="left">

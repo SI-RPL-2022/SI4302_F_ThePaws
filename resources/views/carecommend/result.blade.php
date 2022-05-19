@@ -39,9 +39,9 @@
                         @endif
                     </div>
                     <div class="card-body " align="center">
-                        <div class="mb-3" style="width: 90%" align="left">{{ $validate['nama'] }}</div>
-                        <div class="mb-3" style="width: 90%" align="left">{{ $validate['umur'] }}</div>
-                        <div class="mb-3" style="width: 90%" align="left">{{ $validate['berat_badan'] }}</div>
+                        <div class="mb-3" style="width: 90%" align="left">{{ $nama }}</div>
+                        <div class="mb-3" style="width: 90%" align="left">{{ $umur }}</div>
+                        <div class="mb-3" style="width: 90%" align="left">{{ $bb}}</div>
                         <hr>
                         <div class="mb-3 align-center" style="width: 90%" align="left">
                             @foreach ($foods as $k)
