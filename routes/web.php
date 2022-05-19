@@ -35,9 +35,15 @@ Route::get('/aboutus', function () {
 Route::get('blogs', function () {
     return view('blogs');
 });
+
 Route::get('blogs/create', function () {
     return view('blogs.create');
 });
+
+Route::get('pethouse', function () {
+    return view('pethouse');
+});
+
 Auth::routes();
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
