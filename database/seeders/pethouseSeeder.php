@@ -17,8 +17,6 @@ class pethouseSeeder extends Seeder
         $pethouse = [
             [
                 'nama' => 'Drh Yusuf Adi Nugroho',
-                'kategori1' => '1',
-                'kategori2' => '2',
                 'alamat' => 'Jl. Cikaso No. 88 B, Sukamaju, Kota Bandung',
                 'no_telepon' => '081220902522',
                 'website' => 'http://drh-yusuf-adi-nugroho.business.site/',
@@ -29,8 +27,6 @@ class pethouseSeeder extends Seeder
             ],
             [
                 'nama' => 'Myttens Pet Care',
-                'kategori1' => '1',
-                'kategori2' => '2',
                 'alamat' => 'Jl. Cikaso No. 88 B, Sukamaju, Kota Bandung',
                 'no_telepon' => '081220902522',
                 'website' => 'http://drh-yusuf-adi-nugroho.business.site/',
@@ -41,8 +37,6 @@ class pethouseSeeder extends Seeder
             ],
             [
                 'nama' => 'drh. Anton dan drh. Yesi',
-                'kategori1' => '1',
-                'kategori2' => '2',
                 'alamat' => 'Jl. Cikaso No. 88 B, Sukamaju, Kota Bandung',
                 'no_telepon' => '081220902522',
                 'website' => 'http://drh-yusuf-adi-nugroho.business.site/',
@@ -53,8 +47,6 @@ class pethouseSeeder extends Seeder
             ],
             [
                 'nama' => 'drh. Anton dan drh. Yesi',
-                'kategori1' => '1',
-                'kategori2' => '2',
                 'alamat' => 'Jl. Cikaso No. 88 B, Sukamaju, Kota Bandung',
                 'no_telepon' => '081220902522',
                 'website' => 'http://drh-yusuf-adi-nugroho.business.site/',
@@ -65,8 +57,6 @@ class pethouseSeeder extends Seeder
             ],
             [
                 'nama' => 'Myttens Pet Care',
-                'kategori1' => '1',
-                'kategori2' => '2',
                 'alamat' => 'Jl. Cikaso No. 88 B, Sukamaju, Kota Bandung',
                 'no_telepon' => '081220902522',
                 'website' => 'http://drh-yusuf-adi-nugroho.business.site/',
@@ -77,8 +67,6 @@ class pethouseSeeder extends Seeder
             ],
             [
                 'nama' => 'Drh Yusuf Adi Nugroho',
-                'kategori1' => '1',
-                'kategori2' => '2',
                 'alamat' => 'Jl. Cikaso No. 88 B, Sukamaju, Kota Bandung',
                 'no_telepon' => '081220902522',
                 'website' => 'http://drh-yusuf-adi-nugroho.business.site/',

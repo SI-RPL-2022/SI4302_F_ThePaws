@@ -252,9 +252,7 @@ public function createBlog()
 
     public function createPethouse()
     {
-        $kategori1 = Kategori::all();
-        $kategori2 = Kategori2::all();
-        return view('admin.create_pethouse', compact('kategori1', 'kategori2'));
+        return view('admin.create_pethouse');
     }
     public function editPethouse($id)
     {
@@ -269,8 +267,6 @@ public function createBlog()
     {
         $validatedData = $request->validate([
             'name' => "required",
-            'kategori1' => "required",
-            'kategori2' => 'required',
             'alamat'=>'required',
             'no_telepon'=>'required',
             'website'=>'required',
@@ -283,8 +279,6 @@ public function createBlog()
         if ($validatedData) {
             $pethouse = new pethouse;
             $pethouse->nama = $request->name;
-            $pethouse->kategori1 = $request->kategori1;
-            $pethouse->kategori2 = $request->kategori2;
             $pethouse->alamat = $request->alamat;
             $pethouse->no_telepon = $request->no_telepon;
             $pethouse->website = $request->website;
@@ -301,8 +295,6 @@ public function createBlog()
     {
         $validatedData = $request->validate([
             'name' => "required",
-            'kategori1' => "required",
-            'kategori2' => 'required',
             'alamat'=>'required',
             'no_telepon'=>'required',
             'website'=>'required',
@@ -315,8 +307,6 @@ public function createBlog()
         if ($validatedData) {
             $pethouse = pethouse::find($id);
             $pethouse->nama = $request->name;
-            $pethouse->kategori1 = $request->kategori1;
-            $pethouse->kategori2 = $request->kategori2;
             $pethouse->alamat = $request->alamat;
             $pethouse->no_telepon = $request->no_telepon;
             $pethouse->website = $request->website;

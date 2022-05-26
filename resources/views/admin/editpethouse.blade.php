@@ -17,8 +17,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Vet</th>
-                        <th>Kategori Hewan</th>
-                        <th>Kategori Informasi</th>
                         <th>Tanggal Pembuatan</th>
                         <th width="280px">Action</th>
                     </tr>
@@ -26,8 +24,6 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $pethouse->nama }}</td>
-                            <td>{{ $pethouse->kategori1 }}</td>
-                            <td>{{ $pethouse->kategori2 }}</td>
                             <td>{{ $pethouse->created_at }}</td>
                             <td>
                                 <form action="{{ route('admin.pethouse.destroy',$pethouse->id) }}" method="POST">

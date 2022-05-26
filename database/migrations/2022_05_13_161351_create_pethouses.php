@@ -16,10 +16,6 @@ class CreatePethouses extends Migration
         Schema::create('pethouses', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->unsignedBigInteger('kategori1');
-            $table->foreign('kategori1')->references('id')->on('kategoris')->onDelete('cascade');
-            $table->unsignedBigInteger('kategori2');
-            $table->foreign('kategori2')->references('id')->on('kategoris2')->onDelete('cascade');
             $table->string('alamat');
             $table->string('no_telepon');
             $table->string('website');

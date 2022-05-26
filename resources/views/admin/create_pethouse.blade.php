@@ -6,41 +6,13 @@
         <div class="col-9 col-sm-10 ">
 
             <form action="{{ route('admin.pethouse.store') }}" enctype="multipart/form-data"
-                method="POST">
+                method="post">
                 @csrf
                 <div class="form-group mb-3">
                     <label for="name">Nama Vet</label>
                     <input type="text" class="form-control form-control-sm @error('name') is-invalid @enderror"
                         name="name" id="name">
                     @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group mb-3">
-                    <label for="kategori">Kategori Hewan</label>
-                    <select class="form-select" name="kategori1" id="">
-                        <option selected>Pilih Kategori</option>
-                        @foreach ($kategori1 as $k)
-                            <option value="{{ $k->id }}">{{ $k->nama }}</option>
-                        @endforeach
-                    </select>
-                    @error('kategori1')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group mb-3">
-                    <label for="kategori">Kategori Informasi</label>
-                    <select class="form-select" name="kategori12" id="">
-                        <option selected>Pilih Kategori</option>
-                        @foreach ($kategori2 as $k)
-                            <option value="{{ $k->id }}">{{ $k->nama }}</option>
-                        @endforeach
-                    </select>
-                    @error('kategori2')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -79,7 +51,7 @@
                 <div class="form-group mb-3">
                     <label for="rating">Rating</label>
                     <input type="number" class="form-control form-control-sm @error('rating') is-invalid @enderror"
-                        name="rating" id="rating" min="0" max="0" step="0.1">
+                        name="rating" id="rating" min="0" max="5" step="0.1">
                     @error('rating')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

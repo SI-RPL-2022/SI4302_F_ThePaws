@@ -11,8 +11,6 @@ class pethouse extends Model
     protected $table = 'pethouses';
     protected $fillable = [
         'nama',
-        'kategori1',
-        'kategori2'.
         'alamat',
         'no_telepon',
         'website',

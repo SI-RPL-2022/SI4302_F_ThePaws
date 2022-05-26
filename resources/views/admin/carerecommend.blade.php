@@ -72,11 +72,16 @@
                                             class="img-fluid" width="30%" alt="">
                                     </td>
                                     <td class="text-center text-nowrap">
-                                        <a href="{{ url('/admin/carecommend/food/edit/' . $food->id) }}" class="btn btn-sm"
-                                            style="background-color: #F87575;"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ url('/admin/carecommend/food/delete/' . $food->id) }}"
-                                            class="btn btn-sm" style="background-color: #F87575;"><i
-                                                class="fas fa-trash-alt"></i></a>
+                                        <form action="{{ url('/admin/carecommend/food/delete/' . $food->id) }}" method="POST">
+                                            <a href="{{ url('/admin/carecommend/food/edit/' . $food->id) }}" class="btn btn-sm"
+                                                style="background-color: #F87575;"><i class="fas fa-edit"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
+                                            <a href="{{ url('/admin/carecommend/food/delete/' . $food->id) }}"
+                                                class="btn btn-sm" style="background-color: #F87575;"><i
+                                                    class="fas fa-trash-alt"></i></a>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -169,7 +174,7 @@
                     </div>
                     <div class="col-3 text-end my-auto">
                         <h5>Total Umur : <span class="badge text-dark"
-                                style="background-color: #F87575;">{{ $data2->count() }}</span></h5>
+                                style="background-color: #F87575;">{{ $data3->count() }}</span></h5>
                     </div>
                 </div>
                 <div class="row px-2">
@@ -233,7 +238,7 @@
                     </div>
                     <div class="col-3 text-end my-auto">
                         <h5>Total Berat Badan : <span class="badge text-dark"
-                                style="background-color: #F87575;">{{ $data2->count() }}</span></h5>
+                                style="background-color: #F87575;">{{ $data4->count() }}</span></h5>
                     </div>
                 </div>
                 <div class="row px-2">

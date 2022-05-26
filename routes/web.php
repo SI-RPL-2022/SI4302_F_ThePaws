@@ -103,22 +103,22 @@ Route::get('/admin/carecommend/food/create', [AdminController::class, 'createFoo
 Route::post('/admin/carecommend/food/create', [AdminController::class, 'storeFood'])->name('admin.food.store');
 Route::get('/admin/carecommend/food/edit/{id}', [AdminController::class, 'editFood'])->name('admin.food.edit');
 Route::post('/admin/carecommend/food/update/{id}', [AdminController::class, 'updateFood'])->name('admin.food.update');
-Route::post('/admin/carecommend/food/delete/{id}', [AdminController::class, 'destroyFood'])->name('admin.food.delete');
+Route::get('/admin/carecommend/food/delete/{id}', [AdminController::class, 'destroyFood'])->name('admin.food.delete');
 Route::get('/admin/carecommend/vaccine/create', [AdminController::class, 'createvaccine'])->name('admin.vaccine.create');
 Route::post('/admin/carecommend/vaccine/create', [AdminController::class, 'storevaccine'])->name('admin.vaccine.store');
 Route::get('/admin/carecommend/vaccine/edit/{id}', [AdminController::class, 'editvaccine'])->name('admin.vaccine.edit');
 Route::post('/admin/carecommend/vaccine/update/{id}', [AdminController::class, 'updatevaccine'])->name('admin.vaccine.update');
-Route::post('/admin/carecommend/vaccine/delete/{id}', [AdminController::class, 'destroyvaccine'])->name('admin.vaccine.delete');
+Route::get('/admin/carecommend/vaccine/delete/{id}', [AdminController::class, 'destroyvaccine'])->name('admin.vaccine.delete');
 Route::get('/admin/carecommend/umur/create', [AdminController::class, 'createUmur'])->name('admin.umur.create');
 Route::post('/admin/carecommend/umur/store', [AdminController::class, 'storeUmur'])->name('admin.umur.store');
 Route::get('/admin/carecommend/umur/edit/{id}', [AdminController::class, 'editUmur'])->name('admin.umur.edit');
 Route::post('/admin/carecommend/umur/update/{id}', [AdminController::class, 'updateUmur'])->name('admin.umur.update');
-Route::post('/admin/carecommend/umur/delete/{id}', [AdminController::class, 'destroyUmur'])->name('admin.umur.delete');
+Route::get('/admin/carecommend/umur/delete/{id}', [AdminController::class, 'destroyUmur'])->name('admin.umur.delete');
 Route::get('/admin/carecommend/beratbadan/create', [AdminController::class, 'createBB'])->name('admin.BB.create');
 Route::post('/admin/carecommend/beratbadan/store', [AdminController::class, 'storeBB'])->name('admin.BB.store');
 Route::get('/admin/carecommend/beratbadan/edit/{id}', [AdminController::class, 'editBB'])->name('admin.BB.edit');
 Route::post('/admin/carecommend/beratbadan/update/{id}', [AdminController::class, 'updateBB'])->name('admin.BB.update');
-Route::post('/admin/carecommend/beratbadan/delete/{id}', [AdminController::class, 'destroyBB'])->name('admin.BB.delete');
+Route::get('/admin/carecommend/beratbadan/delete/{id}', [AdminController::class, 'destroyBB'])->name('admin.BB.delete');
 
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
