@@ -9,6 +9,7 @@ use App\Models\pethouse;
 use App\Models\Food;
 use App\Models\Vaccine;
 use App\Models\Umur;
+use App\Models\Workings;
 use App\Models\BB;
 use Illuminate\Http\Request;
 
@@ -21,14 +22,38 @@ class WebController extends Controller
         return view('index', compact('blogs'));
     }
     public function pethouse_index () {
-        $blogs = Blog::orderby('updated_at', 'DESC')->get();
-        $pethouses = pethouse::latest()->paginate(6);
+        $pethouses = pethouse::latest()->simplePaginate(6);
         $populer = pethouse::orderby('rating', 'DESC')->get();
-        $kategori1 = Kategori::all();
-        $kategoris = Kategori2::all();
-        return view('pethouse', compact('pethouses', 'blogs', 'kategori1', 'kategoris', 'populer'))
+        return view('pethouse', compact('pethouses', 'populer'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
+
+    }
+
+    public function pethouse_search (Request $request) {
+        $pethouses = pethouse::where('nama', 'LIKE', '%'. $request->nama . '%')->simplePaginate(6);
+        $populer = pethouse::orderby('rating', 'DESC')->get();
+        $history = $request->nama;
+        if($pethouses->count() > 0) {
+            return view('pethouse', compact('pethouses', 'populer', 'history'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+        } else {
+            return view('pethouse', compact('populer', 'history'));
+        }
         
+    }
+    public function pethouse_result ($pethouses) {
+        $pethouses = $pethouses;
+
+        return view('pethouse_result', compact($pethouses));
+        
+    }
+
+    public function pethouse_details(Request $request, $id)
+    {
+        $pethouse = pethouse::find($id);
+        $populer = pethouse::orderby('rating', 'DESC')->get();
+        $workinghours = Workings::where('pethouse', $id)->get();
+        return view('pethouse_details', compact('pethouse', 'workinghours', 'populer'));
     }
 
     public function carecommend_index () {

@@ -4,6 +4,7 @@
     use App\Models\Kategori;
     use App\Models\Kategori2;
     use App\Models\Blog;
+    use App\Models\User;
     use Illuminate\Support\Carbon;
     @endphp
     <div class="container">
@@ -44,26 +45,62 @@
                             </div>
 
                     {{-- FE KOMENTAR --}}
-                        <form action="#" method="#">
-
+                        <form action="/blogs/{id}/comment" method="post">
+                            @csrf
                             <div class="form-group">
                                 <p for="" style="text-align: left;"><b>Leave A Comment</b></p>
-                                <input type="text" name="id_user"  hidden>
-                                <input type="text" name="id_berita"  hidden>
-                                <textarea placeholder="Tulis Komentar..." name="komentar" class="form-control form-control-sm " cols="4" rows="4" style="resize:none;"></textarea>
-
+                                @if(auth()->user())
+                                    <input type="text" name="user_id" value="{{ auth()->user()->id }}" hidden>
+                                @endif
+                                <input type="text" name="blog_id" value="{{ $blog->id }}"  hidden>
+                                @if(auth()->user())
+                                    <textarea placeholder="{{ 'Komentar sebagai '. auth()->user()->name .'' }}" name="komentar" class="form-control form-control-sm " cols="4" rows="4" style="resize:none;"></textarea>
+                                @else
+                                    <textarea placeholder="Tulis Komentar..." name="komentar" class="form-control form-control-sm " cols="4" rows="4" style="resize:none;"></textarea>
+                                @endif
                                     <span class="invalid-feedback" role="alert">
                                         <strong>ALERT</strong>
                                     </span>
-
-                                <button type="submit" class="btn btn-sm btn-primary mt-2" style="font-size:12px; ">Posting Komentar</button>
+                                @if(auth()->user())
+                                    <button type="submit" class="btn btn-sm btn-primary mt-2" style="font-size:12px; ">Posting Komentar</button>
+                                @else
+                                <button type="submit" class="btn btn-sm btn-primary mt-2" style="font-size:12px; " disabled>Posting Komentar</button>
+                                @endif
                             </div>
                         </form>
 
-                    <div class="text-center fw-bold" style="font-size:13px;">
-                        Silahkan Login terlebih dahulu, sebelum memberikan komentar! <a href="{{ url('/login') }}" class="text-decoration-none"><small>Login Disini</small></a>
-                    </div>
+                    @if(auth()->user())
+                    @else
+                        <div class="text-center fw-bold" style="font-size:13px;">
+                            Silahkan Login terlebih dahulu, sebelum memberikan komentar! <a href="{{ url('/login') }}" class="text-decoration-none"><small>Login Disini</small></a>
+                        </div>
+                    @endif
 
+                    <div class="mt-5">
+                        <p>{{ $comment->count() }} Komentar</p>
+                        <div class="border mt-3">
+                            @foreach ($comment as $c)
+                            <div class="row p-2 align--center">
+                                <div class="col col-2 text-center">
+                                    <img src="{{ asset(''.User::where('id', $c->user_id)->value('image').'') }}" class="rounded-circle" width="70px" height="70px" alt="">
+                                </div>
+                                <div class="col col-10 ">
+                                    <div class="row">
+                                        <div class="col col-12">
+                                            <h6>{{ User::where('id', $c->user_id)->value('name') }}  - <small class="text-muted fw-normal">1 menit yang lalu</small></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-12">
+                                            <p class="font-size-sm">{{ $c->comment }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 

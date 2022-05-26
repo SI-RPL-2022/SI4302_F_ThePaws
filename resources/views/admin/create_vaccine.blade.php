@@ -33,8 +33,12 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="umur">Umur</label>
-                        <input type="text" class="form-control form-control-sm @error('umur') is-invalid @enderror"
-                            name="umur" id="umur">
+                        <select class="form-select" name="umur" id="">
+                            <option selected>Pilih Umur</option>
+                            @foreach ($umur as $u)
+                                <option value="{{ $u->id }}">{{ $u->umur }}</option>
+                            @endforeach
+                        </select>
                         @error('umur')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -43,8 +47,12 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="berat_badan">Berat Badan</label>
-                        <input type="text" class="form-control form-control-sm @error('berat_badan') is-invalid @enderror"
-                            name="berat_badan" id="berat_badan">
+                        <select class="form-select" name="berat_badan" id="">
+                            <option selected>Pilih Berat Badan</option>
+                            @foreach ($bb as $b)
+                                <option value="{{ $b->id }}">{{ $b->bb }}</option>
+                            @endforeach
+                        </select>
                         @error('berat_badan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

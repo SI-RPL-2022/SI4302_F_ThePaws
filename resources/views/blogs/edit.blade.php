@@ -37,16 +37,43 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Kategori Hewan</strong>
-                                <input class="form-control" id="kategori1" name="kategori1" placeholder="kategori1"
-                                    value={{ $blogs->kategori1 }}></input>
+                            <div class="form-group mb-3">
+                                <label for="kategori1">Kategori Hewan</label>
+                                <select class="form-select" name="kategori1" id="">
+                                    <option selected>Pilih Kategori</option>
+                                    @foreach ($kategori1 as $k)
+                                        <option value="{{ $k->id }}"
+                                            @if ($k->id == $blogs->kategori1)
+                                                    {{ 'selected' }}
+                                            @endif
+                                                    >{{ $k->nama }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kategori1')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Kategori Informasi</strong>
-                                    <input class="form-control" id="kategori2" name="kategori2"
-                                        placeholder="kategori2" value={{ $blogs->kategori2 }}></input>
+                                <div class="form-group mb-3">
+                                    <label for="kategori2">Kategori Informasi</label>
+                                    <select class="form-select" name="kategori2" id="">
+                                        <option selected>Pilih Kategori</option>
+                                        @foreach ($kategori2 as $k)
+                                            <option value="{{ $k->id }}"
+                                                @if ($k->id == $blogs->kategori2)
+                                                        {{ 'selected' }}
+                                                        @endif
+                                                        >{{ $k->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('kategori2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <label for="">Foto</label>

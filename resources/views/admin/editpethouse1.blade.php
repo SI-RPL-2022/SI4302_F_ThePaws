@@ -20,8 +20,16 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="kategori1">Kategori Hewan</label>
-                    <input type="text" class="form-control form-control-sm @error('kategori1') is-invalid @enderror"
-                        name="kategori1" id="kategori1" value="{{ $pethouse->kategori1 }}">
+                    <select class="form-select" name="kategori1" id="">
+                        <option selected>Pilih Kategori</option>
+                        @foreach ($kategori1 as $k)
+                            <option value="{{ $k->id }}"
+                                @if ($k->id == $pethouse->kategori1)
+                                        {{ 'selected' }}
+                                @endif
+                                        >{{ $k->nama }}</option>
+                        @endforeach
+                    </select>
                     @error('kategori1')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -30,8 +38,16 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="kategori2">Kategori Informasi</label>
-                    <input type="text" class="form-control form-control-sm @error('kategori2') is-invalid @enderror"
-                        name="kategori2" id="kategori2" value="{{ $pethouse->kategori2 }}">
+                    <select class="form-select" name="kategori2" id="">
+                        <option selected>Pilih Kategori</option>
+                        @foreach ($kategori2 as $k)
+                            <option value="{{ $k->id }}"
+                                @if ($k->id == $pethouse->kategori2)
+                                        {{ 'selected' }}
+                                        @endif
+                                        >{{ $k->nama }}</option>
+                        @endforeach
+                    </select>
                     @error('kategori2')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

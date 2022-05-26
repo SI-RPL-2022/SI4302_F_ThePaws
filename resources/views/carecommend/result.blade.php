@@ -65,7 +65,7 @@
                                         @endforeach
                                     </div>
                                     <div class="col col-6">
-                                        <img src="{{ asset('img/foods/' . $k->foto . '') }}" class="img-fluid"
+                                        <img src="{{ asset('' . $k->foto . '') }}" class="img-fluid"
                                             alt="">
                                     </div>
                                 </div>

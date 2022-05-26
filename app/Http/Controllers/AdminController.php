@@ -154,13 +154,17 @@ class AdminController extends Controller
 public function indexBlog()
 {
     $blogs = Blog::latest()->paginate(5);
+    $kategori1 = Kategori::all();
+    $kategori2 = Kategori2::all();
     return view('blogs.index', compact('blogs'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
 }
 
 public function createBlog()
     {
-        return view('blogs.create');
+        $kategori1 = Kategori::all();
+        $kategori2 = Kategori2::all();
+        return view('blogs.create', compact('kategori1', 'kategori2'));
     }
 
     /**
@@ -200,7 +204,9 @@ public function createBlog()
     public function editBlog($id)
     {
         $blogs = Blog::find($id);
-        return view('blogs.edit', compact('blogs'));
+        $kategori1 = Kategori::all();
+        $kategori2 = Kategori2::all();
+        return view('blogs.edit', compact('blogs', 'kategori1', 'kategori2'));
     }
 
     public function updateBlog(Request $request, $id)
@@ -246,14 +252,18 @@ public function createBlog()
 
     public function createPethouse()
     {
-        return view('admin.create_pethouse');
+        $kategori1 = Kategori::all();
+        $kategori2 = Kategori2::all();
+        return view('admin.create_pethouse', compact('kategori1', 'kategori2'));
     }
     public function editPethouse($id)
     {
         $pethouse = pethouse::find($id);
+        $kategori1 = Kategori::all();
+        $kategori2 = Kategori2::all();
         $workinghours = Workings::where('pethouse', $id)->get();
         // dd(empty($workinghours[0]));
-        return view('admin.editpethouse1', compact('pethouse', 'workinghours'));
+        return view('admin.editpethouse1', compact('pethouse', 'workinghours', 'kategori1', 'kategori2'));
     }
     public function storePethouse(Request $request)
     {
@@ -467,7 +477,9 @@ public function destroyFood($id)
     public function createVaccine()
     {
         $kategori = Kategori::all();
-        return view('admin.create_vaccine', compact('kategori'));
+        $umur = Umur::all();
+        $bb = BB::all();
+        return view('admin.create_vaccine', compact('kategori', 'umur', 'bb'));
     }
 
     public function editVaccine($id)

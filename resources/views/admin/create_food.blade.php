@@ -30,6 +30,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div>
                     <div class="form-group mb-3">
                         <label for="umur">Umur</label>
                         <select class="form-select" name="umur" id="">
