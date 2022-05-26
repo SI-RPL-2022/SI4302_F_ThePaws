@@ -174,7 +174,7 @@
                     </div>
                     <div class="col-3 text-end my-auto">
                         <h5>Total Umur : <span class="badge text-dark"
-                                style="background-color: #F87575;">{{ $data3->count() }}</span></h5>
+                                style="background-color: #F87575;">{{ $data4->count() }}</span></h5>
                     </div>
                 </div>
                 <div class="row px-2">
@@ -238,7 +238,7 @@
                     </div>
                     <div class="col-3 text-end my-auto">
                         <h5>Total Berat Badan : <span class="badge text-dark"
-                                style="background-color: #F87575;">{{ $data4->count() }}</span></h5>
+                                style="background-color: #F87575;">{{ $data5->count() }}</span></h5>
                     </div>
                 </div>
                 <div class="row px-2">
