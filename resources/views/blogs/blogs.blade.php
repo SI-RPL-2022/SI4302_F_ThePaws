@@ -7,13 +7,6 @@
     @endphp
     <div class="container mt-4">'
         <div class="row">
-
-            <div class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary">search</button>
-            </div>
-
             <div class="col-8 col-md-8 py-3">
                 <div class="col-4 col-lg-2 text-center mt-2" style="border-left:4px solid #F87575;">
                     <h5>Berita Terkini</h5>

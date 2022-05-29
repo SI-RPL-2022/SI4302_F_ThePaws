@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Kategori;
 use App\Models\Kategori2;
+use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class blogsController extends Controller
@@ -36,13 +39,31 @@ class blogsController extends Controller
      * @param  \App\blogs  $blogs
      * @return \Illuminate\Http\Response
      */
+    public function saveComment(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'komentar' => 'required'
+        ]);
+        $blog = Blog::find($id);
+        $comment = new Comment;
+        $comment->user_id = $request->user_id;
+        $comment->blog_id = $request->blog_id;
+        $comment->comment = $request->komentar;
+        $comment->save();
+
+        return redirect()->back()->with('success', 'berhasil memposting komentar');
+    }
+
     public function show(Request $request, $id)
     {
         $blogs = Blog::orderby('updated_at', 'DESC')->get();
         $blog = Blog::find($id);
         $kategori1 = Kategori::all();
         $kategoris = Kategori2::all();
-        return view('blogs.blogsdetails', compact('blog', 'blogs', 'kategori1', 'kategoris'));
+        $comment = Comment::where('blog_id', $id)->get();
+        
+        // $user = DB::table(DB::raw('user u'))->select('u.id', 'u.name', 'u.foto')->get();
+        return view('blogs.blogsdetails', compact('blog', 'blogs', 'kategori1', 'kategoris', 'comment'));
     }
     public function filter(Request $request)
     {   
