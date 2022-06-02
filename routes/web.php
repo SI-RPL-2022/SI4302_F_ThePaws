@@ -56,6 +56,10 @@ Route::get('/admin/carerecommend', function () {
     return view('admin.carerecommend');
 });
 
+Route::get('adoption/detail', function () {
+    return view('adoption.detail');
+});
+
 // Route::get('blogs/filter', function(){
 //     return view('blogs.filter');
 // });
