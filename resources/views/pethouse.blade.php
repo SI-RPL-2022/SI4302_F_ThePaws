@@ -75,7 +75,7 @@
                 @foreach($populer->take(3) as $item)
                     <div class="row g-0 mb-3 justify-content-center">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{ $item->foto }}" class="card-img-top" alt="...">
+                            <img src="{{ asset(''.$item->foto.'') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <a href="{{ '/pethouse/details/'.$item->id.'' }}" class="text-decoration-none text-dark">
                                     <div class="row">
