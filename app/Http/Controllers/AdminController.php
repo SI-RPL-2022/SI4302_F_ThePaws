@@ -183,7 +183,7 @@ public function createBlog()
             'deskripsi' => 'required',
         ]);
         if ($foto = $request->file('foto')) {
-            $destinationPath = 'img';  
+            $destinationPath = 'img';
             $fileSource1 = $foto->getClientOriginalName();
             $foto->move($destinationPath, $fileSource1);
         }
@@ -220,7 +220,7 @@ public function createBlog()
         ]);
 ;
         if ($foto = $request->file('foto')) {
-            $destinationPath = 'img';  
+            $destinationPath = 'img';
             $fileSource1 = $foto->getClientOriginalName();
             $foto->move($destinationPath, $fileSource1);
         }
@@ -237,7 +237,7 @@ public function createBlog()
         // blogs::whereId($id)->update($validatedData);
 
         return redirect('/admin/blogs')->with('success', 'Game Data is successfully updated');
-        // return back()->withInput(); 
+        // return back()->withInput();
         // return redirect()->to('blogs.index')->with('success', 'Data Berhasil Diubah');
         // return redirect()->route('blogs.index')
         //                 ->with('success','blogs updated successfully');
@@ -275,7 +275,7 @@ public function createBlog()
             'deskripsi'=>'required',
             'foto'=>'required',
         ]);
-        
+
         if ($validatedData) {
             $pethouse = new pethouse;
             $pethouse->nama = $request->name;
@@ -289,7 +289,7 @@ public function createBlog()
             $pethouse->save();
             return redirect('/admin/pethouse')->with('success', 'Game Data is successfully updated');
         }
-        
+
         }
     public function updatePethouse(Request $request, $id)
     {
@@ -303,7 +303,7 @@ public function createBlog()
             'deskripsi'=>'required',
             'foto'=>'required',
         ]);
-        
+
         if ($validatedData) {
             $pethouse = pethouse::find($id);
             $pethouse->nama = $request->name;
@@ -341,12 +341,12 @@ public function createBlog()
                     }
                 }
             }
-            
+
             return redirect('/admin/pethouse')->with('success', 'Game Data is successfully updated');
         }
-        
+
         }
-    
+
 
 
     public function destroyPethouse($id)
@@ -631,4 +631,13 @@ public function createBB()
         return redirect()->back();
     }
 }
+
+    public function indexAdoption()
+    {
+        return view('admin.edit_adoption');
+    }
+    public function createAdoption()
+    {
+        return view('admin.create_adoption');
+    }
 }
