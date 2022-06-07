@@ -135,7 +135,7 @@ Route::get('/blogs/filter/{nama}', [blogsController::class, 'filter'])->name('bl
 // Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
 
 // pethouse
-Route::get('/admin/pethouse', [AdminController::class, 'showPethouse'])->name('admin.pethouse');
+Route::get('/admin/pethouse', [AdminController::class, 'indexPethouse'])->name('admin.pethouse');
 // Route::post('/admin/pethouse/tambah', [AdminController::class, 'tambahPethouse'])->name('admin.pethouse.tambah');
 Route::get('/admin/pethouse/tambah', [AdminController::class, 'tambahPethouse'])->name('admin.pethouse.tambah');
 Route::get('/admin/pethouse/edit/{id}', [AdminController::class, 'editPethouse'])->name('admin.pethouse.edit');
