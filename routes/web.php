@@ -126,6 +126,8 @@ Route::post('/admin/carecommend/beratbadan/store', [AdminController::class, 'sto
 Route::get('/admin/carecommend/beratbadan/edit/{id}', [AdminController::class, 'editBB'])->name('admin.BB.edit');
 Route::post('/admin/carecommend/beratbadan/update/{id}', [AdminController::class, 'updateBB'])->name('admin.BB.update');
 Route::get('/admin/carecommend/beratbadan/delete/{id}', [AdminController::class, 'destroyBB'])->name('admin.BB.delete');
+Route::get('/admin/adoption', [AdminController::class, 'indexAdoption'])->name('admin.adoption');
+Route::get('/admin/adoption/create', [AdminController::class, 'createAdoption'])->name('admin.adoption.create');
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 Route::post('/blogs/{id}/comment', [blogsController::class, 'saveComment'])->name('blogs.comment.save');
