@@ -9,6 +9,7 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\blogsController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AdoptionController;
 
 
 /*
@@ -54,6 +55,10 @@ Route::get('/admin/editpethouse1', function () {
 
 Route::get('/admin/carerecommend', function () {
     return view('admin.carerecommend');
+});
+
+Route::get('/adoption', function () {
+    return view('adoption.adoption');
 });
 
 Route::get('adoption/detail', function () {
