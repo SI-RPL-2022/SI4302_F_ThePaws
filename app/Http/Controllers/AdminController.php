@@ -12,6 +12,7 @@ use App\Models\Food;
 use App\Models\Vaccine;
 use App\Models\Umur;
 use App\Models\BB;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Session;
 
@@ -20,7 +21,9 @@ class AdminController extends Controller
 
     public function dashboardAdmin()
     {
-        return view('admin.dashboard');
+        $total_user = User::count();
+        $article = Blog::count();
+        return view('admin.dashboard',compact('total_user','article'));
     }
 
     public function adminHome()
