@@ -13,6 +13,7 @@ use App\Models\Vaccine;
 use App\Models\Umur;
 use App\Models\BB;
 use App\Models\User;
+use App\Models\About;
 
 use Illuminate\Support\Facades\Session;
 
@@ -34,6 +35,26 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index');
+    }
+
+    public function aboutUsShow()
+    {
+        $data = About::all()->first();
+        return view('admin.aboutUsShow', compact('data'));
+    }
+    public function aboutUsStore(Request $request)
+    {
+        $validate = $request->validate([
+            'text' => 'required',
+        ]);
+        $data = About::all()->first();
+        if($data !== null) {
+            $data->text = $request->text;
+            $data->save();
+        } else {
+            $about = About::create($validate);
+        }
+        return redirect(route('admin.aboutus.show'))->with('success', 'Data Berhasil Disimpan');
     }
 
 

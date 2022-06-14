@@ -12,8 +12,7 @@
     </div>
     <div class="row my-3">
         <div class="col text-start">
-            <p align="justify">ThePaws dibentuk pada tahun 2022 oleh mahasiswa Telkom University S1 Sistem Informasi. The Paws yang dapat membantu kamu menemukan berbagai informasi untuk hewan peliharaan tersayang.
-                Tujuan dari pembuatan aplikasi ini adalah untuk mengedukasi masyarakat umum, terutama pemilik hewan khususnya anjing, dan kucing untuk mengetahui bagaimana cara memberikan pertolongan pertama ketika peliharaannya terjatuh sakit. Adapun services yang kami berikan adalah Blogs, PetHouse, CaRecommend, Adoption, dan PetCessories. Informasi yang diberikan dalam aplikasi harapannya dapat meningkatkan pengetahuan masyarakat tentang bagaimana cara memberikan pertolongan pertama pada hewan khususnya anjing, dan kucing saat sakit, dan juga bagaimana cara merawat hewan yang baik. </p>
+            <p align="justify">{{ $data->text }}</p>
         </div>
     </div>
 

@@ -69,6 +69,12 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" style="color: white" href="{{ route('admin.aboutus.show') }}">
+                <i class="fas fa-fw fa-house"></i>
+                <span>About Us</span></a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" style="color: white" href="{{ route('logout') }}" onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
                 <i class="fas fa-fw fa-sign-out"></i>

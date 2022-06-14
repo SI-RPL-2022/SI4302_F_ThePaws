@@ -11,6 +11,7 @@ use App\Models\Vaccine;
 use App\Models\Umur;
 use App\Models\Workings;
 use App\Models\BB;
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -20,6 +21,11 @@ class WebController extends Controller
         $kategori1 = Kategori::all();
         $kategoris = Kategori2::all();
         return view('index', compact('blogs'));
+    }
+
+    public function about () {
+        $data = About::all()->first();
+        return view('aboutus', compact('data'));
     }
     public function pethouse_index () {
         $pethouses = pethouse::latest()->simplePaginate(6);
