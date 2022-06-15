@@ -35,7 +35,7 @@
                                     <label for="">Teks About Us</label>
                                     <textarea type="text"
                                         class="form-control form-control-sm @error('text') is-invalid @enderror" name="text"
-                                        id="text" rows='5'>{{ $data->text }}</textarea>
+                                        id="text" rows='5'>{{ ($data != null) ? $data->text : ''}}</textarea>
                                     @error('text')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
