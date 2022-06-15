@@ -104,8 +104,12 @@ Route::post('/admin/carecommend/beratbadan/store', [AdminController::class, 'sto
 Route::get('/admin/carecommend/beratbadan/edit/{id}', [AdminController::class, 'editBB'])->name('admin.BB.edit');
 Route::post('/admin/carecommend/beratbadan/update/{id}', [AdminController::class, 'updateBB'])->name('admin.BB.update');
 Route::get('/admin/carecommend/beratbadan/delete/{id}', [AdminController::class, 'destroyBB'])->name('admin.BB.delete');
-Route::get('/admin/adoption', [AdminController::class, 'indexAdoption'])->name('admin.adoption');
+Route::get('/admin/adoption', [AdminController::class, 'indexAdoption'])->name('admin.show.adoption');
 Route::get('/admin/adoption/create', [AdminController::class, 'createAdoption'])->name('admin.adoption.create');
+Route::post('/admin/adoption/store', [AdminController::class, 'storeAdoption'])->name('admin.adoption.store');
+Route::get('/admin/adoption/edit/{id}', [AdminController::class, 'editAdoption'])->name('admin.adoption.edit');
+Route::post('/admin/adoption/update/{id}', [AdminController::class, 'updateAdoption'])->name('admin.adoption.update');
+Route::get('/admin/adoption/delete/{id}', [AdminController::class, 'destroyAdoption'])->name('admin.adoption.delete');
 Route::get('/admin/aboutus', [AdminController::class, 'aboutUsShow'])->name('admin.aboutus.show');
 Route::post('/admin/aboutus/store', [AdminController::class, 'aboutUsStore'])->name('admin.aboutus.store');
 
