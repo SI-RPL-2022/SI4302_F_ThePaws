@@ -34,7 +34,7 @@
                                 <!-- Column -->
                                 <div class="col-md-6 col-lg-3 col-xlg-3">
                                     <div class="card card-hover">
-                                        <div class="p-2" style="background-color: #8DB1F3;border-radius:12px;color:white;cursor: pointer;" onclick="location.href='{{ route('admin.adoption') }}'">
+                                        <div class="p-2" style="background-color: #8DB1F3;border-radius:12px;color:white;cursor: pointer;" onclick="location.href='{{ route('admin.show.adoption') }}'">
                                             <h3 class="text-center">Adoption</h3>
                                             <i class="fas fa-fw fa-paw fa-3x pb-3"></i>
                                             <span class="text-center"> </span>
