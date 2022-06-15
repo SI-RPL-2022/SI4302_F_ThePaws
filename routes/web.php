@@ -28,6 +28,7 @@ Route::get('/aboutus', [WebController::class, 'about'])->name('about');
 Route::get('/pethouse/search/', [WebController::class, 'pethouse_search'])->name('pethouse.search');
 Route::get('/pethouse/details/{id}', [WebController::class, 'pethouse_details'])->name('pethouse.details');
 Route::get('/carecommend', [WebController::class, 'carecommend_index'])->name('carecommend.index');
+Route::get('/adoption/detail/{id}', [WebController::class, 'detailAdoption'])->name('adoption.detail');
 Route::post('/carecommend/result', [WebController::class, 'carecommend_result'])->name('carecommend.result');
 
 Route::get('/faq', function () {
@@ -39,6 +40,9 @@ Route::get('blogs', function () {
 });
 Route::get('blogs/create', function () {
     return view('blogs.create');
+});
+Route::get('/adoption/detail', function () {
+    return view('adoption.detail');
 });
 
 // Route::get('blogs/filter', function(){

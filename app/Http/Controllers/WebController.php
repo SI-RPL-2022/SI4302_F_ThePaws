@@ -12,6 +12,7 @@ use App\Models\Umur;
 use App\Models\Workings;
 use App\Models\BB;
 use App\Models\About;
+use App\Models\Adoption;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -84,5 +85,12 @@ class WebController extends Controller
             $kategori = $request->kategori;
         }
         return view('carecommend.result', compact('foods', 'vaccines', 'kategori', 'umur', 'bb', 'nama'));
+    }
+
+    public function detailAdoption($id)
+    {
+        $data = Adoption::find($id);
+        $kategori = Kategori::all();
+        return view('adoption.detail', compact('data', 'kategori'));
     }
 }
