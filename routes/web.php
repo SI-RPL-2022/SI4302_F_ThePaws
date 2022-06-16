@@ -41,6 +41,10 @@ Route::get('blogs/create', function () {
     return view('blogs.create');
 });
 
+Route::get('/adoption', function () {
+    return view('adoption.adoption');
+});
+
 // Route::get('blogs/filter', function(){
 //     return view('blogs.filter');
 // });
