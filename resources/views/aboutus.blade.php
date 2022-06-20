@@ -15,28 +15,5 @@
             <p align="justify">{{ $data->text }}</p>
         </div>
     </div>
-
-    <h1 class="text-start">Kami butuh Feedback kalian! </h1>
-    <form action="" class="text-start">
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input type="form-control" class="form-control" id="exampleFormControlInput1">
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Alamat E-mail</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1">
-                </div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Pesan</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <button class="btn paws-peach-btn">Send Message</button>
-    </form>
 </div>
 @endsection
