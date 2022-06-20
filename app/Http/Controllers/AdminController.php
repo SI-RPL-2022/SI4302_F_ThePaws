@@ -660,7 +660,7 @@ public function createBB()
     public function indexAdoption()
     {
         $kategori = Kategori::all();
-        $data = Adoption::all();
+        $data = Adoption::paginate(5);
         return view('admin.show_adoption', compact('data', 'kategori'));
     }
     
@@ -686,7 +686,7 @@ public function createBB()
         ]);
 
         if ($foto = $request->file('foto')) {
-            $destinationPath = 'adoption/img';
+            $destinationPath = 'img/adoption';
             $fileSource1 = $foto->getClientOriginalName();
             $foto->move($destinationPath, $fileSource1);
         }

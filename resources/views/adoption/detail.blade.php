@@ -5,9 +5,9 @@
             <div class="col-7 ">
                 <div class="card-body text-start">
                     <div class="mb-3 text-start">
-                        <h1 class="text-start"><a href="" class="text-black">Adoption</a><span> / details</span></h1>
+                        <h1 class="text-start"><a href="{{ route('adoption.index') }}" class="text-black">Adoption</a><span> / details</span></h1>
                     </div>
-                    <img src="{{ asset('adoption/img/'. $data->foto .'') }}" alt="penyakit-kucing" class="card img-top img-fluid my-3 mx-auto rounded" width="250px">
+                    <img src="{{ asset('img/adoption/'. $data->foto .'') }}" alt="penyakit-kucing" class="card img-top img-fluid my-3 mx-auto rounded" width="250px">
                     <div align="justify" style="font-size:15px;">
                         <div class="col-12 px-3 py-2" style="border-left:4px solid #F87575; ">
                             <h1>{{ $data->nama_peliharaan }}</h1>

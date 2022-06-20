@@ -25,13 +25,11 @@
                     class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
                     aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <a href="/blogs" class="text-decoration-none text-black">
                                 <div class="card">
                                     <img class="img-fluid" alt="100%x280" src="img/Blogs.jpg">
@@ -44,7 +42,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <a href="/pethouse" class="text-decoration-none text-black">
                                 <div class="card">
                                     <img class="img-fluid" alt="100%x280" src="img/vet.jpg">
@@ -57,7 +55,24 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-md-4 mb-3">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 mb-3">
+                            <a href="/adoptions" class="text-decoration-none text-black">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280" src="img/Adoption.jpg">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Adoption</h4>
+                                        <p class="card-text">Ingin peliharaan baru? Coba cek informasi hewan siap adopsi
+                                            disini
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
                             <a href="/carecommend" class="text-decoration-none text-black">
                                 <div class="card">
                                     <img class="img-fluid" alt="100%x280" src="img/CaRecommend.png">
@@ -68,31 +83,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <img class="img-fluid" alt="100%x280" src="img/Adoption.jpg">
-                                <div class="card-body">
-                                    <h4 class="card-title">Adoption</h4>
-                                    <p class="card-text">Ingin peliharaan baru? Coba cek informasi hewan siap adopsi
-                                        disini
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <img class="img-fluid" alt="100%x280" src="img/PetCessories.jpg">
-                                <div class="card-body">
-                                    <h4 class="card-title">PetCessories</h4>
-                                    <p class="card-text">Buatlah peliharaan anda selalu senang dengan memanjakannya</p>
-                                </div>
-                            </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ class CreateAdoptionsTable extends Migration
             $table->string('no_hp');
             $table->string('alamat');
             $table->string('foto');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }
