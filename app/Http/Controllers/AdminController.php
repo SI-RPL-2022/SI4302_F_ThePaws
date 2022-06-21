@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\About;
 use App\Models\Adoption;
 
+
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -25,7 +26,9 @@ class AdminController extends Controller
     {
         $total_user = User::count();
         $article = Blog::count();
-        return view('admin.dashboard',compact('total_user','article'));
+        $adoption = Adoption::count();
+        $pethouse = pethouse::count();
+        return view('admin.dashboard',compact('total_user','article','adoption','pethouse'));
     }
 
     public function adminHome()
@@ -663,13 +666,13 @@ public function createBB()
         $data = Adoption::paginate(5);
         return view('admin.show_adoption', compact('data', 'kategori'));
     }
-    
+
     public function createAdoption()
     {
         $kategori = Kategori::all();
         return view('admin.create_adoption', compact('kategori'));
     }
-    
+
     public function storeAdoption(Request $request)
     {
         $validate = $request->validate([

@@ -37,7 +37,7 @@
                                         <div class="p-2" style="background-color: #8DB1F3;border-radius:12px;color:white;cursor: pointer;" onclick="location.href='{{ route('admin.show.adoption') }}'">
                                             <h3 class="text-center">Adoption</h3>
                                             <i class="fas fa-fw fa-paw fa-3x pb-3"></i>
-                                            <span class="text-center"> </span>
+                                            <span class="text-center">{{ $adoption }} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         <div class="p-2" style="background-color: #8DB1F3;border-radius:12px;color:white;cursor: pointer;" onclick="location.href='{{ route('admin.pethouse') }}'">
                                             <h3 class="text-center">PetHouse</h3>
                                             <i class="fas fa-fw fa-house fa-3x pb-3"></i>
-                                            <span class="text-center"> </span>
+                                            <span class="text-center">{{ $pethouse }} </span>
                                         </div>
                                     </div>
                                 </div>
