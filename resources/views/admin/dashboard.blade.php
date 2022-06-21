@@ -42,19 +42,9 @@
                                     </div>
                                 </div>
 
-                                <!-- Column -->
-                                <div class="col-md-6 col-lg-3 col-xlg-3">
-                                    <div class="card card-hover">
-                                        <div class="p-2" style="background-color: #8DB1F3;border-radius:12px;color:white;cursor: pointer;" onclick="location.href='{{ route('admin.carecommend') }}'">
-                                            <h3 class="text-center">CaRecommend</h3>
-                                            <i class="fas fa-fw fa-bone fa-3x pb-3"></i>
-                                            <span class="text-center"> </span>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Column -->
-                                <div class="col-md-6 col-lg-3 col-xlg-3 pt-5">
+                                <div class="col-md-6 col-lg-3 col-xlg-3 ">
                                     <div class="card card-hover">
                                         <div class="p-2" style="background-color: #8DB1F3;border-radius:12px;color:white;cursor: pointer;" onclick="location.href='{{ route('admin.pethouse') }}'">
                                             <h3 class="text-center">PetHouse</h3>
