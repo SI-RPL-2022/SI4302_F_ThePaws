@@ -44,7 +44,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" style="color: white" href="{{ route('admin.adoption') }}">
+            <a class="nav-link" style="color: white" href="{{ route('admin.show.adoption') }}">
                 <i class="fas fa-fw fa-paw"></i>
                 <span>Adoption</span></a>
         </li>
@@ -66,6 +66,12 @@
             <h5 class="nav-link" style="color: white" href="#">
                 <span>OTHERS</span>
             </h5>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" style="color: white" href="{{ route('admin.aboutus.show') }}">
+                <i class="fas fa-fw fa-house"></i>
+                <span>About Us</span></a>
         </li>
 
         <li class="nav-item">

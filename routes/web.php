@@ -25,44 +25,16 @@ use App\Http\Controllers\AdoptionController;
 
 Route::get('/', [WebController::class, 'index'])->name('landing.page');
 Route::get('/pethouse', [WebController::class, 'pethouse_index'])->name('pethouse.index');
+Route::get('/aboutus', [WebController::class, 'about'])->name('about');
 Route::get('/pethouse/search/', [WebController::class, 'pethouse_search'])->name('pethouse.search');
 Route::get('/pethouse/details/{id}', [WebController::class, 'pethouse_details'])->name('pethouse.details');
 Route::get('/carecommend', [WebController::class, 'carecommend_index'])->name('carecommend.index');
+Route::get('/adoptions', [WebController::class, 'indexAdoption'])->name('adoption.index');
+Route::get('/adoptions/detail/{id}', [WebController::class, 'detailAdoption'])->name('adoption.detail');
 Route::post('/carecommend/result', [WebController::class, 'carecommend_result'])->name('carecommend.result');
 
 Route::get('/faq', function () {
     return view('faq');
-});
-
-Route::get('/aboutus', function () {
-    return view('aboutus');
-});
-
-Route::get('blogs', function () {
-    return view('blogs');
-});
-Route::get('blogs/create', function () {
-    return view('blogs.create');
-});
-
-Route::get('/admin/editpethouse', function () {
-    return view('admin.editpethouse');
-});
-
-Route::get('/admin/editpethouse1', function () {
-    return view('admin.editpethouse1');
-});
-
-Route::get('/admin/carerecommend', function () {
-    return view('admin.carerecommend');
-});
-
-Route::get('/adoption', function () {
-    return view('adoption.adoption');
-});
-
-Route::get('adoption/detail', function () {
-    return view('adoption.detail');
 });
 
 // Route::get('blogs/filter', function(){
@@ -131,8 +103,14 @@ Route::post('/admin/carecommend/beratbadan/store', [AdminController::class, 'sto
 Route::get('/admin/carecommend/beratbadan/edit/{id}', [AdminController::class, 'editBB'])->name('admin.BB.edit');
 Route::post('/admin/carecommend/beratbadan/update/{id}', [AdminController::class, 'updateBB'])->name('admin.BB.update');
 Route::get('/admin/carecommend/beratbadan/delete/{id}', [AdminController::class, 'destroyBB'])->name('admin.BB.delete');
-Route::get('/admin/adoption', [AdminController::class, 'indexAdoption'])->name('admin.adoption');
+Route::get('/admin/adoption', [AdminController::class, 'indexAdoption'])->name('admin.show.adoption');
 Route::get('/admin/adoption/create', [AdminController::class, 'createAdoption'])->name('admin.adoption.create');
+Route::post('/admin/adoption/store', [AdminController::class, 'storeAdoption'])->name('admin.adoption.store');
+Route::get('/admin/adoption/edit/{id}', [AdminController::class, 'editAdoption'])->name('admin.adoption.edit');
+Route::post('/admin/adoption/update/{id}', [AdminController::class, 'updateAdoption'])->name('admin.adoption.update');
+Route::get('/admin/adoption/delete/{id}', [AdminController::class, 'destroyAdoption'])->name('admin.adoption.delete');
+Route::get('/admin/aboutus', [AdminController::class, 'aboutUsShow'])->name('admin.aboutus.show');
+Route::post('/admin/aboutus/store', [AdminController::class, 'aboutUsStore'])->name('admin.aboutus.store');
 
 Route::get('/blogs/{id}', [blogsController::class, 'show'])->name('blogs.show');
 Route::post('/blogs/{id}/comment', [blogsController::class, 'saveComment'])->name('blogs.comment.save');

@@ -14,6 +14,10 @@ use App\Models\Food;
 use App\Models\Vaccine;
 use App\Models\Umur;
 use App\Models\BB;
+use App\Models\User;
+use App\Models\About;
+use App\Models\Adoption;
+
 
 
 use Illuminate\Support\Facades\Session;
@@ -23,7 +27,11 @@ class AdminController extends Controller
 
     public function dashboardAdmin()
     {
-        return view('admin.dashboard');
+        $total_user = User::count();
+        $article = Blog::count();
+        $adoption = Adoption::count();
+        $pethouse = pethouse::count();
+        return view('admin.dashboard',compact('total_user','article','adoption','pethouse'));
     }
 
     public function adminHome()
@@ -34,6 +42,26 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index');
+    }
+
+    public function aboutUsShow()
+    {
+        $data = About::all()->first();
+        return view('admin.aboutUsShow', compact('data'));
+    }
+    public function aboutUsStore(Request $request)
+    {
+        $validate = $request->validate([
+            'text' => 'required',
+        ]);
+        $data = About::all()->first();
+        if($data !== null) {
+            $data->text = $request->text;
+            $data->save();
+        } else {
+            $about = About::create($validate);
+        }
+        return redirect(route('admin.aboutus.show'))->with('success', 'Data Berhasil Disimpan');
     }
 
 
@@ -637,10 +665,109 @@ public function createBB()
 
     public function indexAdoption()
     {
-        return view('admin.edit_adoption');
+        $kategori = Kategori::all();
+        $data = Adoption::paginate(5);
+        return view('admin.show_adoption', compact('data', 'kategori'));
     }
+
     public function createAdoption()
     {
-        return view('admin.create_adoption');
+        $kategori = Kategori::all();
+        return view('admin.create_adoption', compact('kategori'));
     }
+
+    public function storeAdoption(Request $request)
+    {
+        $validate = $request->validate([
+            'nama_peliharaan' => 'required',
+            'kategori' => 'required',
+            'jenis_kelamin' => 'required',
+            'ras' => 'required',
+            'umur' => 'required',
+            'berat' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'foto' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        if ($foto = $request->file('foto')) {
+            $destinationPath = 'img/adoption';
+            $fileSource1 = $foto->getClientOriginalName();
+            $foto->move($destinationPath, $fileSource1);
+        }
+
+        if ($validate) {
+            $adoption = new Adoption();
+            $adoption->nama_peliharaan = $request->nama_peliharaan;
+            $adoption->kategori = $request->kategori;
+            $adoption->jenis_kelamin = $request->jenis_kelamin;
+            $adoption->ras = $request->ras;
+            $adoption->umur = $request->umur;
+            $adoption->berat = $request->berat;
+            $adoption->no_hp = $request->no_hp;
+            $adoption->alamat = $request->alamat;
+            $adoption->foto = $fileSource1;
+            $adoption->deskripsi = $request->deskripsi;
+            $adoption->save();
+            return redirect(route('admin.show.adoption'))->with('success', 'Game Data is successfully updated');
+    }}
+
+    public function editAdoption($id)
+    {
+        $data = Adoption::find($id);
+        $kategori = Kategori::all();
+        return view('admin.edit_adoption', compact('data', 'kategori'));
+    }
+
+    public function updateAdoption(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'nama_peliharaan' => 'required',
+            'kategori' => 'required',
+            'jenis_kelamin' => 'required',
+            'ras' => 'required',
+            'umur' => 'required',
+            'berat' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'foto' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        if ($foto = $request->file('foto')) {
+            $destinationPath = 'adoption/img';
+            $fileSource1 = $foto->getClientOriginalName();
+            $foto->move($destinationPath, $fileSource1);
+        }
+
+        if ($validate) {
+            $adoption = Adoption::find($id);
+            $adoption->nama_peliharaan = $request->nama_peliharaan;
+            $adoption->kategori = $request->kategori;
+            $adoption->jenis_kelamin = $request->jenis_kelamin;
+            $adoption->ras = $request->ras;
+            $adoption->umur = $request->umur;
+            $adoption->berat = $request->berat;
+            $adoption->no_hp = $request->no_hp;
+            $adoption->alamat = $request->alamat;
+            $adoption->foto = $fileSource1;
+            $adoption->deskripsi = $request->deskripsi;
+            $adoption->save();
+            return redirect(route('admin.show.adoption'))->with('success', 'Game Data is successfully updated');
+    }}
+
+    public function destroyAdoption($id)
+{
+    $data = Adoption::findOrFail($id);
+    $delete = $data->delete();
+
+    if ($delete) {
+        Session::flash('success', 'Berhasil hapus data');
+        return redirect()->back();
+    } else {
+        Session::flash('errors', 'Gagal hapus data');
+        return redirect()->back();
+    }
+}
 }

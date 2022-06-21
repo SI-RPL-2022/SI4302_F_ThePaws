@@ -12,15 +12,13 @@
                 <a class="nav-link text-white" href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
                     aria-expanded="true">Services</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">Adoption</a>
+                    <li><a href="{{ route('adoption.index') }}" style="text-decoration: none; color:black; margin-left:2ex">Adoption</a>
                     </li>
                     <li><a href="/blogs" style="text-decoration: none; color:black; margin-left:2ex">Blogs</a>
                     </li>
                     <li><a href="/carecommend" style="text-decoration: none; color:black; margin-left:2ex">CaRecommend</a>
                     </li>
                     <li><a href="/pethouse" style="text-decoration: none; color:black; margin-left:2ex">PetHouse</a>
-                    </li>
-                    <li><a href="#" style="text-decoration: none; color:black; margin-left:2ex">PetCessories</a>
                     </li>
                 </ul>
                 <a class="nav-link text-white" href="/aboutus">About Us</a>

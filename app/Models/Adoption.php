@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Adoption extends Model
 {
     use HasFactory;
+    protected $table = 'adoptions';
+    protected $fillable = [
+        'nama_peliharaan',
+        'kategori',
+        'jenis_kelamin',
+        'ras',
+        'umur',
+        'berat',
+        'alamat',
+        'foto',
+        'deskripsi'
+    ];
 }

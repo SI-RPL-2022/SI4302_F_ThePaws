@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Vaccine;
+use Illuminate\Support\Facades\DB;
 
 class VaccineSeeder extends Seeder
 {
@@ -14,19 +15,21 @@ class VaccineSeeder extends Seeder
      */
     public function run()
     {
+        $umurs = DB::table('umur')->pluck('id');
+        $bbs = DB::table('bb')->pluck('id');
         $vaccine = [
             [
                 'nama' => 'Tetracat',
                 'kategori' => '2',
-                'umur' => '2 - 12 bulan',
-                'berat_badan' => '1.5 - 2.5 kg',
+                'umur' => $umurs->random(),
+                'berat_badan' => $bbs->random(),
                 'deskripsi' => 'Feline panleucopenia, Feline rhinotracheitis, Felina calicivirus dan juga Clamydia',
             ],
             [
                 'nama' => 'Rabies',
                 'kategori' => '2',
-                'umur' => '> 12 bulan',
-                'berat_badan' => '< 2 bulan',
+                'umur' => $umurs->random(),
+                'berat_badan' => $bbs->random(),
                 'deskripsi' => 'Vaksin ini sangat penting karena virus rabies akan menyerang kekebalan tubuh kucing dan dapat menularkan pada siapa pun',
             ],
         ];

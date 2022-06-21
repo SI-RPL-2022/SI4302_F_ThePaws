@@ -11,7 +11,11 @@ use App\Models\Vaccine;
 use App\Models\Umur;
 use App\Models\Workings;
 use App\Models\BB;
+use App\Models\About;
+use App\Models\Adoption;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
 
 class WebController extends Controller
 {
@@ -20,6 +24,11 @@ class WebController extends Controller
         $kategori1 = Kategori::all();
         $kategoris = Kategori2::all();
         return view('index', compact('blogs'));
+    }
+
+    public function about () {
+        $data = About::all()->first();
+        return view('aboutus', compact('data'));
     }
     public function pethouse_index () {
         $pethouses = pethouse::latest()->simplePaginate(6);
@@ -78,5 +87,25 @@ class WebController extends Controller
             $kategori = $request->kategori;
         }
         return view('carecommend.result', compact('foods', 'vaccines', 'kategori', 'umur', 'bb', 'nama'));
+    }
+
+    public function indexAdoption()
+    {
+        $anjings = Adoption::where('kategori', 1)->paginate(
+            $perPage = 3, $columns = ['*'], $pageName = 'anjings'
+        );
+        $kucings = Adoption::where('kategori', 2)->paginate(
+            $perPage = 3, $columns = ['*'], $pageName = 'kucings'
+        );
+        // $anjings = Adoption::where('kategori', 1)->paginate(3);
+        // $kucings = Adoption::where('kategori', 2)->paginate(3)->setPageName('kucings');
+        $kategori = Kategori::all();
+        return view('adoption.index', compact('anjings', 'kucings', 'kategori'));
+    }
+    public function detailAdoption($id)
+    {
+        $data = Adoption::find($id);
+        $kategori = Kategori::all();
+        return view('adoption.detail', compact('data', 'kategori'));
     }
 }

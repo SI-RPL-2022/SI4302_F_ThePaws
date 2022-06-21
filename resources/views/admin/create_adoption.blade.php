@@ -3,24 +3,34 @@
 <div class="container-fluid" style="min-height: 768px; background-color: #F2F2F2;">
     <div class="row">
         @include('admin-layouts.sidebar')
-        <div class="col-9 col-sm-10 ">
-            <form action="#" enctype="multipart/form-data" method="post">
+        <div class="col px-3">
+            <form action="{{ route('admin.adoption.store') }}" enctype="multipart/form-data" method="post">
+                @csrf
                 <div class="form-group mb-3">
-                    <label for="name">Nama Peliharaan</label>
+                    <label for="nama_peliharaan">Nama Peliharaan</label>
                     <input type="text" class="form-control form-control-sm"
-                        name="name" id="name">
+                        name="nama_peliharaan" id="nama_peliharaan">
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="kategori">Kategori</label>
-                    <input type="text" class="form-control form-control-sm"
+                    <select type="text" class="form-select form-select-sm"
                         name="kategori" id="kategori">
+                        <option value="" selected>Pilih Kategori</option>
+                        @foreach ($kategori as $k)
+                                <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="kelamin">Jenis Kelamin</label>
-                    <input type="text" class="form-control form-control-sm"
-                        name="kelamin" id="kelamin">
+                    <label for="jenis_kelamin"> Jenis Kelamin</label>
+                    <select type="text" class="form-select form-select-sm"
+                        name="jenis_kelamin" id="jenis_kelamin">
+                        <option value="" selected>Pilih Jenis Kelamin</option>
+                        <option value="Jantan">Jantan</option>
+                        <option value="Betina">Betina</option>
+                    </select>
                 </div>
 
                 <div class="form-group mb-3">
@@ -36,15 +46,15 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="berat">Website</label>
+                    <label for="berat">Berat</label>
                     <input type="text" class="form-control form-control-sm"
                         name="berat" id="berat">
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="noHP">No HP Pemilik</label>
+                    <label for="no_hp">Nomor HP Pemilik</label>
                     <input type="text" class="form-control form-control-sm"
-                        name="noHP" id="noHP">
+                        name="no_hp" id="no_hp">
                 </div>
 
                 <div class="form-group mb-3">
@@ -61,8 +71,7 @@
 
                 <div>
                     <label for="deskripsi">Deskripsi Tentang Peliharaan</label>
-                    <textarea name="deskripsi" id="deskripsi"
-                        class="form-control form-control-sm "></textarea>
+                    <textarea name="deskripsi" id="editor1" class="form-control form-control-sm"></textarea>
                 </div>
 
                 <div class="text-center">
@@ -72,4 +81,12 @@
             </form>
         </div>
     </div>
-    @endsection
+    <script src="{{ asset('js/build/ckeditor.js') }}"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor1' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+@endsection
