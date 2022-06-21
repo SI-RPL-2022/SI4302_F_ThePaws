@@ -17,8 +17,4 @@
 <body>
     @include('user-layouts.navbaruser')
     @yield('container')
-
-    @if(Auth::user()->image)
-    <image class="image rounded-circle" src="{{asset('/storages/images/'.Auth::user()->image)}}" alt="profile_image" style="width:80px;height:80px;padding:10px;margin:0px;"></image>
-    @endif
 </body>

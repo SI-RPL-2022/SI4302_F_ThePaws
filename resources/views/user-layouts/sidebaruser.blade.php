@@ -7,7 +7,11 @@
             @if (empty($user->image))
             <i class="fa-solid fa-circle-user text-white">&nbsp;&nbsp;</i>
             @else
-            <img src="{{ asset(''.$user->image.'') }}" width="50" height="50" class="rounded-circle me-2" alt="...">
+            @php
+                $image = substr($user->image,6)
+
+            @endphp
+            <img src="{{ asset('storage/'.$image.'') }}" width="50" height="50" class="rounded-circle me-2" alt="...">
             @endif
         </div>
         <div class="flex-grow-1">

@@ -64,7 +64,7 @@ class UserController extends Controller
         $user->jenis_kelamin = $request->jenis_kelamin;
         $user->tanggal_lahir = $request->tanggal_lahir;
         $user->alamat = $request->alamat;
-        $user->image = $request->file('image')->store('profil');
+        $user->image = $request->file('image')->store('public/profil');
         $user->save();
 
 

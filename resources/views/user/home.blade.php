@@ -20,7 +20,10 @@ use Illuminate\Support\Carbon;
                   @if (empty($user->image))
                   <p>Anda belum melengkapi data diri anda</p>
                   @else
-                  <img src="{{ asset($user->image) }}" class="avatar img-circle" alt="avatar" width="250px">
+                  @php
+                      $image = substr($user->image,6)
+                  @endphp
+                  <img src="{{ asset('storage/'.$image.'') }}" class="avatar img-circle" alt="avatar" width="250px">
                   @endif
                 </div>
               </div>

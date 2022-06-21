@@ -16,7 +16,10 @@
               <div class="col-md-3">
                 <div class="text-center">
                   <p>Foto Profile</p>
-                  <img src="{{ asset($user->image) }}" class="avatar img-circle" alt="avatar" width="250px">
+                  @php
+                      $image = substr($user->image,6)
+                  @endphp
+                  <img src="{{ asset('storage/'.$image.'') }}" class="avatar img-circle" alt="avatar" width="250px">
                 </div>
               </div>
 
@@ -49,26 +52,22 @@
 
                   <div class="mb-3">
                     <label class="form-label" for="jenis_kelamin">Jenis Kelamin</label>
-                    <label class="radio-inline"> <input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="laki-laki">Laki-Laki</label>
-                    <label class="radio-inline"><input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="perempuan">Perempuan</label>
+                    <label class="radio-inline"> <input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="laki-laki" {{ ($user->jenis_kelamin == 'laki-laki' ? 'checked="checked"' : '') }}>Laki-Laki</label>
+                    <label class="radio-inline"><input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="perempuan" {{ ($user->jenis_kelamin == 'perempuan' ? 'checked="checked"' : '') }}>Perempuan</label>
                   </div>
 
                   <div class="mb-3">
                     <label class="form-label" for="tanggal_lahir">Tanggal lahir</label>
                     <div class="input-group date" id="datepicker">
-                      <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"/>
+                      <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $user->tanggal_lahir }}"/>
                       <span class="input-group-append">
-                        <span class="input-group-text bg-light d-block">
-                        <i class="fa fa-calendar"></i>
-                        </span>
                       </span>
                     </div>
                   </div>
 
                   <div class="mb-3">
                     <label class="form-label" for="alamat">Alamat</label>
-                    <textarea class="form-control" id="alamat" name="alamat" rows="4" value="{{ $user->alamat }}">
-                    </textarea>
+                    <textarea class="form-control" id="alamat" name="alamat" rows="4">{{ $user->alamat }}</textarea>
                   </div>
                   <div class="mb-3">
                     <label class="form-label" for="image">Foto Profile</label>
